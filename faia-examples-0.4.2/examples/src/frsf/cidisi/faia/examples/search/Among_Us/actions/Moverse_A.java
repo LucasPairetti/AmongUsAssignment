@@ -5,7 +5,7 @@ import frsf.cidisi.faia.agent.search.SearchBasedAgentState;
 import frsf.cidisi.faia.state.AgentState;
 import frsf.cidisi.faia.state.EnvironmentState;
 
-public class Moverse_A extends SearchAction  {
+public class Moverse_A<T> extends SearchAction  {
 
     //como no puede pasarse argumentos vamos a tener que hacer una accion por cada habitacion al parecer, preguntar esto hoy!
 

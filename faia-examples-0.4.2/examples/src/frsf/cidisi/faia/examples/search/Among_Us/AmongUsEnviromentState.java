@@ -98,12 +98,12 @@ public AmongUsEnviromentState(){
 
         // Generate Random obj
         Random r = new Random();
-/* 
+
         // Set agent random parameters
         Room[] keys = (Room[]) ship.keySet().toArray();
         this.setAgentPosition(keys[r.nextInt(keys.length)]);
         this.setAgentEnergy(r.nextInt(30, 151));
-*/
+
         // Set tripulantes
         // Set variables
         int numTripulantes = 7;

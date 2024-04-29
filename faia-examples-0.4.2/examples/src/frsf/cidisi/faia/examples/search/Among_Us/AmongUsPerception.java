@@ -41,6 +41,7 @@ public class AmongUsPerception extends Perception{
 
         // Creo que la energía debe setearse en el state y sacarse de ahí.
         this.energia = state.getAgentEnergy();
+        //falta un objeto tipo coleccion de rooms que traiga las habitaciones con gente adentro
 
     }
 
