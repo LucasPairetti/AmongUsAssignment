@@ -12,6 +12,10 @@ public class AmongUsImpostorState extends SearchBasedAgentState {
     private Room habitacionActual;
     //aca tambien irian las habitaciones conectadas?
     private List<Room> habitacionesConectadas = new ArrayList<Room>();
+    private int energia_Inicial;
+    private int tripulantes_Vivos;
+    private List<Tripulante> tripulantes_en_habitacion;
+    private int tareas_Pendientes;
 
     
 
