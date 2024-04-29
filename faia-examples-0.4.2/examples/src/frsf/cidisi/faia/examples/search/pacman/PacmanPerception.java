@@ -34,6 +34,7 @@ public class PacmanPerception extends Perception {
     private int bottomSensor;
     private int energy;
 
+    // ERROR!
     public PacmanPerception() {
         energy = 50;
     }

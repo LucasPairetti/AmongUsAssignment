@@ -4,6 +4,10 @@ public class Tripulante {
 
     public int id;
 
+    public Tripulante(int id) {
+        this.id = id;
+    }
+
     public int getId() {
         return id;
     }
