@@ -16,7 +16,7 @@ public class AmongUsImpostorState extends SearchBasedAgentState {
     private int energia_Inicial;
     private int tripulantes_Vivos;
     private List<Tripulante> tripulantes_en_habitacion;
-    private int tareas_Pendientes;
+    private List<Tarea> tareas_Pendientes;
 
     
 
@@ -24,7 +24,7 @@ public class AmongUsImpostorState extends SearchBasedAgentState {
 
     public AmongUsImpostorState(HashMap<Room, Collection<Room>> ship, int energia, Room habitacionActual,
             List<Room> habitacionesConectadas, int energia_Inicial, int tripulantes_Vivos,
-            List<Tripulante> tripulantes_en_habitacion, int tareas_Pendientes) {
+            List<Tripulante> tripulantes_en_habitacion) {
         this.ship = ship;
         this.energia = energia;
         this.habitacionActual = habitacionActual;
@@ -32,7 +32,11 @@ public class AmongUsImpostorState extends SearchBasedAgentState {
         this.energia_Inicial = energia_Inicial;
         this.tripulantes_Vivos = tripulantes_Vivos;
         this.tripulantes_en_habitacion = tripulantes_en_habitacion;
-        this.tareas_Pendientes = tareas_Pendientes;
+        ArrayList<Tarea> listaTareas = new ArrayList<Tarea>();
+        listaTareas.add(Tarea.DESCONECTAR_SERVICIO_ELECTRICO);
+        listaTareas.add(Tarea.DESTRUIR_REACTOR);
+        listaTareas.add(Tarea.DESTRUIR_SALA_ARMAS);
+        this.tareas_Pendientes = listaTareas;
     }
 
     public int getEnergia() {
@@ -83,16 +87,7 @@ public class AmongUsImpostorState extends SearchBasedAgentState {
         this.tripulantes_en_habitacion = tripulantes_en_habitacion;
     }
 
-    public int getTareas_Pendientes() {
-        return tareas_Pendientes;
-    }
-
-    public void setTareas_Pendientes(int tareas_Pendientes) {
-        this.tareas_Pendientes = tareas_Pendientes;
-    }
-
     
-
     @Override
     public boolean equals(Object obj) {
         // TODO Auto-generated method stub
@@ -135,4 +130,14 @@ public class AmongUsImpostorState extends SearchBasedAgentState {
         this.ship = ship;
     }
 
+    public void setTareas_Pendientes(List<Tarea> tareas_Pendientes) {
+        this.tareas_Pendientes = tareas_Pendientes;
+    }
+
+    public List<Tarea> getTareas_Pendientes() {
+        return tareas_Pendientes;
+    }
+
+    
+    
 }

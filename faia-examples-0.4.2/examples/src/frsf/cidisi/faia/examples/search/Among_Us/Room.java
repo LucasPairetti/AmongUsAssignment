@@ -6,11 +6,20 @@ public class Room {
     public int id;
     public String nombre;
     public List<Tripulante> tripulantesEnHabitacion;
-    
+    public Tarea tarea;
     public Room(int id, String nombre) {
         this.id = id;
         this.nombre = nombre;
         this.tripulantesEnHabitacion = new ArrayList<Tripulante> ();
+       
+      
+    }
+    
+    public Room(int id, String nombre, Tarea tarea) {
+        this.id = id;
+        this.nombre = nombre;
+        this.tripulantesEnHabitacion = new ArrayList<Tripulante> ();
+        this.tarea = tarea;
       
     }
     public Room(int id, String nombre, List<Room> sucesores) {
@@ -48,6 +57,14 @@ public class Room {
 
     public void removeTripulanteById(Tripulante tripulante){
         tripulantesEnHabitacion.remove(tripulante.getId());
+    }
+
+    public Tarea getTarea() {
+        return tarea;
+    }
+
+    public void setTarea(Tarea tarea) {
+        this.tarea = tarea;
     }
     
 
