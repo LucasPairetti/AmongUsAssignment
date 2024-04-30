@@ -8,8 +8,9 @@ public class AmongUsGoal extends GoalTest {
 
     @Override
     public boolean isGoalState(AgentState agentState) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'isGoalState'");
+        if (((AmongUsImpostorState) agentState).getEnergia()>0 && ((AmongUsImpostorState) agentState).getTripulantes_Vivos() ==0){
+            return true;
+        }else return false;
     }
 
 }
