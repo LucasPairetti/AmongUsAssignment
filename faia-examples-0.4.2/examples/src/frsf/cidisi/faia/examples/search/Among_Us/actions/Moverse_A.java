@@ -53,7 +53,7 @@ public class Moverse_A extends SearchAction {
         enviromentState.setAgentPosition(habitacionSiguiente);
         enviromentState.setAgentEnergy(impostorState.getEnergia() - 1);
 
-        return null;
+        return enviromentState;
     }
 
     @Override
