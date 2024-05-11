@@ -23,7 +23,7 @@ public class AmongUsImpostorState extends SearchBasedAgentState {
 
 
     public AmongUsImpostorState(HashMap<Room, Collection<Room>> ship, int energia, Room habitacionActual,
-            List<Room> habitacionesConectadas, int energia_Inicial, int tripulantes_Vivos,
+            Collection<Room> habitacionesConectadas, int energia_Inicial, int tripulantes_Vivos,
             List<Tripulante> tripulantes_en_habitacion) {
         this.ship = ship;
         this.energia = energia;
