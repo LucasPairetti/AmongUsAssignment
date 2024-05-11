@@ -22,7 +22,7 @@ public class AmongUsImpostorAgent extends SearchBasedAgent {
         // Impostor agent state
         AmongUsImpostorState state = new AmongUsImpostorState(init.getShip(), init.getAgentEnergy(),
                 init.getAgentPosition(), init.getShip().get(init.getAgentPosition()), init.getAgentEnergy(), 
-                init.getCantTripulantes(), )
+                init.getCantTripulantes(), init.getTripulantes_en_habitacion(), init.getTripulantes_Adyacentes() );
 
     }
 

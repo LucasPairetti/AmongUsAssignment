@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Random;
 
 public class Inicializador {
@@ -12,11 +13,12 @@ public class Inicializador {
 
     private int agentEnergy;
     private Room agentPosition;
+    private Collection<Room> habitacionesConectadas;
     private int cantTripulantes;
-
     private HashMap<Room, Collection<Room>> ship;
-    private Room agentPosition;
-    private int agentEnergy;
+    private ArrayList<Tarea> listaTareas;
+     private List<Tripulante> tripulantes_en_habitacion;
+     private HashMap<Room, Collection<Tripulante>> Tripulantes_Adyacentes; //hay que hacer la percepcion de atrapar el conjunto (room, tripulantes de las otras habitaciones)
 
     private final Room nodo1;
     private final Room nodo2;
@@ -100,7 +102,45 @@ public class Inicializador {
         this.agentPosition = keys.get(r.nextInt(1, 21));
         this.agentEnergy = r.nextInt(30, 151);
         this.cantTripulantes = 7;
+
+        Tripulante tripulante;
+        ArrayList<Room> nodos = new ArrayList<Room>(ship.keySet());
+    
+        // Put tripulantes que estaba en enviroment state
+        for(int i = 0; i < this.cantTripulantes; i++) {
+            tripulante = new Tripulante(i);
+            nodos.get(r.nextInt(nodos.size())).addTripulante(tripulante);
+        }
+
+        //habitaciones conectadas
+
+        this.habitacionesConectadas= ship.get(this.agentPosition);
+
+
+
+        //tareas
+        ArrayList<Tarea> listaTareas = new ArrayList<Tarea>();
+        listaTareas.add(Tarea.DESCONECTAR_SERVICIO_ELECTRICO);
+        listaTareas.add(Tarea.DESTRUIR_REACTOR);
+        listaTareas.add(Tarea.DESTRUIR_SALA_ARMAS);
         
+        //primeros tripulantes en habitacion
+        
+        tripulantes_en_habitacion= agentPosition.getTripulantesEnHabitacion();
+
+        //tripulantes en habitaciones conectadas
+        Tripulantes_Adyacentes= new HashMap<Room, Collection<Tripulante>>();
+        for(Room room: habitacionesConectadas){
+
+            if(!room.getTripulantesEnHabitacion().isEmpty()){
+                Tripulantes_Adyacentes.put(room, room.getTripulantesEnHabitacion());
+            }
+
+        }
+
+
+
+
     }
 
     public int getAgentEnergy() {
@@ -119,4 +159,21 @@ public class Inicializador {
         return ship;
     }
 
+    public ArrayList<Tarea> getListaTareas() {
+        return listaTareas;
+    }
+
+    public List<Tripulante> getTripulantes_en_habitacion() {
+        return tripulantes_en_habitacion;
+    }
+
+    public Collection<Room> getHabitacionesConectadas() {
+        return habitacionesConectadas;
+    }
+
+    public HashMap<Room, Collection<Tripulante>> getTripulantes_Adyacentes() {
+        return Tripulantes_Adyacentes;
+    }
+
+    
 }

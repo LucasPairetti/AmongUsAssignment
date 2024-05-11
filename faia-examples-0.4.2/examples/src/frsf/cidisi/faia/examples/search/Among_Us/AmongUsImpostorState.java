@@ -12,19 +12,23 @@ public class AmongUsImpostorState extends SearchBasedAgentState {
     private HashMap<Room, Collection<Room>> ship;
     private int energia;
     private Room habitacionActual;
-    private List<Room> habitacionesConectadas = new ArrayList<Room>();
+    private Collection<Room> habitacionesConectadas = new ArrayList<Room>();
     private int energia_Inicial;
     private int tripulantes_Vivos;
     private List<Tripulante> tripulantes_en_habitacion;
     private List<Tarea> tareas_Pendientes;
+    private HashMap<Room, Collection<Tripulante>> Tripulantes_Adyacentes;
 
     
 
 
 
+    
+
     public AmongUsImpostorState(HashMap<Room, Collection<Room>> ship, int energia, Room habitacionActual,
             Collection<Room> habitacionesConectadas, int energia_Inicial, int tripulantes_Vivos,
-            List<Tripulante> tripulantes_en_habitacion) {
+            List<Tripulante> tripulantes_en_habitacion,
+            HashMap<Room, Collection<Tripulante>> tripulantes_Adyacentes) {
         this.ship = ship;
         this.energia = energia;
         this.habitacionActual = habitacionActual;
@@ -37,6 +41,22 @@ public class AmongUsImpostorState extends SearchBasedAgentState {
         listaTareas.add(Tarea.DESTRUIR_REACTOR);
         listaTareas.add(Tarea.DESTRUIR_SALA_ARMAS);
         this.tareas_Pendientes = listaTareas;
+        Tripulantes_Adyacentes = tripulantes_Adyacentes;
+    }
+
+    public AmongUsImpostorState(){
+        Inicializador init= Inicializador.getInstance();
+        this.energia= init.getAgentEnergy();
+        this.energia_Inicial= init.getAgentEnergy();
+        this.habitacionActual = init.getAgentPosition();
+        this.ship = init.getShip();
+        this.tripulantes_Vivos=init.getCantTripulantes();
+        this.habitacionesConectadas = init.getHabitacionesConectadas();
+        this.tareas_Pendientes = init.getListaTareas();
+        this.tripulantes_en_habitacion=init.getTripulantes_en_habitacion();
+        this.Tripulantes_Adyacentes = init.getTripulantes_Adyacentes();
+
+
     }
 
     public int getEnergia() {
@@ -55,7 +75,7 @@ public class AmongUsImpostorState extends SearchBasedAgentState {
         this.habitacionActual = habitacionActual;
     }
 
-    public List<Room> getHabitacionesConectadas() {
+    public Collection<Room> getHabitacionesConectadas() {
         return habitacionesConectadas;
     }
 
@@ -136,6 +156,18 @@ public class AmongUsImpostorState extends SearchBasedAgentState {
 
     public List<Tarea> getTareas_Pendientes() {
         return tareas_Pendientes;
+    }
+
+    public void setHabitacionesConectadas(Collection<Room> habitacionesConectadas) {
+        this.habitacionesConectadas = habitacionesConectadas;
+    }
+
+    public HashMap<Room, Collection<Tripulante>> getTripulantes_Adyacentes() {
+        return Tripulantes_Adyacentes;
+    }
+
+    public void setTripulantes_Adyacentes(HashMap<Room, Collection<Tripulante>> tripulantes_Adyacentes) {
+        Tripulantes_Adyacentes = tripulantes_Adyacentes;
     }
 
     
