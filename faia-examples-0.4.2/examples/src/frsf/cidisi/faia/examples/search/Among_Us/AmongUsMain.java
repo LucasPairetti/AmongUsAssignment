@@ -12,7 +12,6 @@ import frsf.cidisi.faia.simulator.SearchBasedAgentSimulator;
 public class AmongUsMain {
     public static void main(String[] args) throws PrologConnectorException {
         
-        Random r = new Random();
 
         AmongUsImpostorAgent impostor = new AmongUsImpostorAgent();
             

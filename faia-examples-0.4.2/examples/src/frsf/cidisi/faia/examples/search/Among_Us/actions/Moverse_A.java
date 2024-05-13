@@ -26,8 +26,7 @@ public class Moverse_A extends SearchAction {
     public SearchBasedAgentState execute(SearchBasedAgentState s) {
 
         AmongUsImpostorState impostorState = (AmongUsImpostorState) s;
-        Room habitacionActual = impostorState.getHabitacionActual();
-
+        
         if (!impostorState.getHabitacionesConectadas().contains(habitacionSiguiente))
             return null;
         else {

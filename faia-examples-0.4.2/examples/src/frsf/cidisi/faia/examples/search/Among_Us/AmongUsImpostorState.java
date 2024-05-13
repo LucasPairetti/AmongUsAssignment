@@ -24,7 +24,7 @@ public class AmongUsImpostorState extends SearchBasedAgentState {
 
 
     
-
+/* 
     public AmongUsImpostorState(HashMap<Room, Collection<Room>> ship, int energia, Room habitacionActual,
             Collection<Room> habitacionesConectadas, int energia_Inicial, int tripulantes_Vivos,
             List<Tripulante> tripulantes_en_habitacion,
@@ -42,21 +42,10 @@ public class AmongUsImpostorState extends SearchBasedAgentState {
         listaTareas.add(Tarea.DESTRUIR_SALA_ARMAS);
         this.tareas_Pendientes = listaTareas;
         Tripulantes_Adyacentes = tripulantes_Adyacentes;
-    }
+    }*/
 
     public AmongUsImpostorState(){
-        Inicializador init= Inicializador.getInstance();
-        this.energia= init.getAgentEnergy();
-        this.energia_Inicial= init.getAgentEnergy();
-        this.habitacionActual = init.getAgentPosition();
-        this.ship = init.getShip();
-        this.tripulantes_Vivos=init.getCantTripulantes();
-        this.habitacionesConectadas = init.getHabitacionesConectadas();
-        this.tareas_Pendientes = init.getListaTareas();
-        this.tripulantes_en_habitacion=init.getTripulantes_en_habitacion();
-        this.Tripulantes_Adyacentes = init.getTripulantes_Adyacentes();
-
-
+        initState();
     }
 
     public int getEnergia() {
@@ -135,7 +124,16 @@ public class AmongUsImpostorState extends SearchBasedAgentState {
     @Override
     public void initState() {
         // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'initState'");
+        Inicializador init= Inicializador.getInstance();
+        this.energia= init.getAgentEnergy();
+        this.energia_Inicial= init.getAgentEnergy();
+        this.habitacionActual = init.getAgentPosition();
+        this.ship = init.getShip();
+        this.tripulantes_Vivos=init.getCantTripulantes();
+        this.habitacionesConectadas = init.getHabitacionesConectadas();
+        this.tareas_Pendientes = init.getListaTareas();
+        this.tripulantes_en_habitacion=init.getTripulantes_en_habitacion();
+        this.Tripulantes_Adyacentes = init.getTripulantes_Adyacentes();
     }
 
 
