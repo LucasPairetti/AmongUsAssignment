@@ -17,8 +17,14 @@ public class Inicializador {
     private int cantTripulantes;
     private HashMap<Room, Collection<Room>> ship;
     private ArrayList<Tarea> listaTareas;
-     private List<Tripulante> tripulantes_en_habitacion;
-     private HashMap<Room, Collection<Tripulante>> Tripulantes_Adyacentes; //hay que hacer la percepcion de atrapar el conjunto (room, tripulantes de las otras habitaciones)
+    private HashMap<Room, Collection<Tripulante>> habitacionesConTripulantes;
+    private Boolean tareaEnHabitacion;
+   
+    //habilidad especial
+    private int nroDePercepcion;
+    private int proximoPoder;
+
+
 
     private final Room nodo1;
     private final Room nodo2;
@@ -124,21 +130,28 @@ public class Inicializador {
         listaTareas.add(Tarea.DESTRUIR_REACTOR);
         listaTareas.add(Tarea.DESTRUIR_SALA_ARMAS);
         
-        //primeros tripulantes en habitacion
+        //primeros tripulantes en habitacionews
         
-        tripulantes_en_habitacion= agentPosition.getTripulantesEnHabitacion();
+        habitacionesConTripulantes = new HashMap<Room, Collection<Tripulante>> ();
+        if(!agentPosition.getTripulantesEnHabitacion().isEmpty()){
+            habitacionesConTripulantes.put(agentPosition, agentPosition.getTripulantesEnHabitacion());
+        }
 
-        //tripulantes en habitaciones conectadas
-        Tripulantes_Adyacentes= new HashMap<Room, Collection<Tripulante>>();
         for(Room room: habitacionesConectadas){
-
             if(!room.getTripulantesEnHabitacion().isEmpty()){
-                Tripulantes_Adyacentes.put(room, room.getTripulantesEnHabitacion());
+                habitacionesConTripulantes.put(room, room.getTripulantesEnHabitacion());
             }
 
         }
 
+        if(agentPosition.getTarea()==null){
+            this.tareaEnHabitacion=false;
+          } else
+          this.tareaEnHabitacion=true;
 
+          Random nro = new Random();
+          this.nroDePercepcion=0;
+          this.proximoPoder= nro.nextInt(3, 6);
 
 
     }
@@ -163,17 +176,28 @@ public class Inicializador {
         return listaTareas;
     }
 
-    public List<Tripulante> getTripulantes_en_habitacion() {
-        return tripulantes_en_habitacion;
-    }
 
     public Collection<Room> getHabitacionesConectadas() {
         return habitacionesConectadas;
     }
 
-    public HashMap<Room, Collection<Tripulante>> getTripulantes_Adyacentes() {
-        return Tripulantes_Adyacentes;
+    public HashMap<Room, Collection<Tripulante>> getHabitacionesConTripulantes() {
+        return habitacionesConTripulantes;
     }
+
+    public Boolean getTareaEnHabitacion() {
+        return tareaEnHabitacion;
+    }
+
+    public int getNroDePercepcion() {
+        return nroDePercepcion;
+    }
+
+    public int getProximoPoder() {
+        return proximoPoder;
+    }
+
+    
 
     
 }

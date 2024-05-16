@@ -16,14 +16,15 @@ public class matar_Tripulante extends SearchAction {
     public SearchBasedAgentState execute(SearchBasedAgentState s) {
        AmongUsImpostorState impostorState = (AmongUsImpostorState) s;
 
-       if(impostorState.getTripulantes_en_habitacion().isEmpty())
+       if(!impostorState.getHabitacionesConTripulantes().containsKey(impostorState.getHabitacionActual()))
     return null; //hay que agregar que pasa
     else{
-      Tripulante victima= impostorState.getTripulantes_en_habitacion().get(0);
-      impostorState.getTripulantes_en_habitacion().remove(victima);
-      victima.setVivo(false);
-    impostorState.setTripulantes_Vivos(impostorState.getTripulantes_Vivos()-1);
-    impostorState.setEnergia(impostorState.getEnergia()-1);
+        Tripulante victima= impostorState.getHabitacionActual().getTripulantesEnHabitacion().get(0);
+        victima.setVivo(false);
+        impostorState.setTripulantes_Vivos(impostorState.getTripulantes_Vivos()-1);
+        impostorState.setEnergia(impostorState.getEnergia()-1);
+        impostorState.getHabitacionActual().getTripulantesEnHabitacion().remove(victima);
+
         return impostorState;
       
     }

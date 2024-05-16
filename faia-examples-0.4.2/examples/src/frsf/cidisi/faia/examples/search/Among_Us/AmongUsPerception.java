@@ -18,9 +18,13 @@ public class AmongUsPerception extends Perception{
     private int energia;
 
     //esta las agregué hoy 16/5 porque necesitamos saber si la habitacion tiene o no una tarea y saber si las habitaciones de alrededor tienen tripulantes
-    private List<Tripulante> tripulantes_en_habitacion;
-    private Tarea Tarea;
-    private HashMap<Room, Collection<Tripulante>> Tripulantes_Adyacentes;
+
+    private HashMap<Room, Collection<Tripulante>> habitacionesConTripulantes;
+    private Boolean tareaEnHabitacion;
+    
+     //habilidad especial
+     private int nroDePercepcion;
+     private int proximoPoder;
 
     public AmongUsPerception() {
         // No inicializar, porque se crea uno nuevo cada vez que se pide una percepcion
@@ -41,6 +45,9 @@ public class AmongUsPerception extends Perception{
         AmongUsEnviromentState state = (AmongUsEnviromentState) environment.getEnvironmentState();
         HashMap<Room, Collection<Room>> ship = state.getShip();
         
+
+        
+
         // Set agent position
         this.habitacionActual = state.getAgentPosition();
 
@@ -50,31 +57,42 @@ public class AmongUsPerception extends Perception{
         // Creo que la energía debe setearse en el state y sacarse de ahí.
         this.energia = state.getAgentEnergy();
         
-       //tripulantes en habitacion
-       this.tripulantes_en_habitacion =  new ArrayList<Tripulante>();
-        this.tripulantes_en_habitacion = state.getAgentPosition().getTripulantesEnHabitacion();
+      //tarea en habitacion
+
+      if(state.getAgentPosition().getTarea()==null){
+        this.tareaEnHabitacion=false;
+      } else
+      this.tareaEnHabitacion=true;
+
+
         // tripulantes en habitaciones adyacentes
-        this.Tripulantes_Adyacentes = new HashMap<Room, Collection<Tripulante>>();
-        for(Room room: habitacionesSiguientes){
-            if(!room.getTripulantesEnHabitacion().isEmpty()){
-                Tripulantes_Adyacentes.put(room, room.getTripulantesEnHabitacion());
-            }
-
-            /*Habilidad especial, guarda en esta variable todas las habitaciones con al menos 1 tripulante dentro, pero aun no está
-            implementada
-            
-            List<Room> habitacionesConTripulantes = new ArrayList<Room>();
-            for(Room habitacion :ship.keySet()){
-                if(!habitacion.getTripulantesEnHabitacion().isEmpty())
-                    habitacionesConTripulantes.add(habitacion);
-            }
-             */
-
+        this.habitacionesConTripulantes = new HashMap<Room, Collection<Tripulante>>();
+        
+        if(!state.getAgentPosition().getTripulantesEnHabitacion().isEmpty()){
+            habitacionesConTripulantes.put(state.getAgentPosition(), state.getAgentPosition().getTripulantesEnHabitacion());
         }
 
+        for(Room room: habitacionesSiguientes){
+            if(!room.getTripulantesEnHabitacion().isEmpty()){
+                habitacionesConTripulantes.put(room, room.getTripulantesEnHabitacion());
+            }
 
+        }
+         /*Habilidad especial, guarda en esta variable todas las habitaciones con al menos 1 tripulante dentro, pero aun no está
+            implementada*/
 
-        
+            //habilidad especial
+            nroDePercepcion++;
+            if(nroDePercepcion==proximoPoder){
+             
+            
+            for(Room habitacion :ship.keySet()){
+                if(!habitacion.getTripulantesEnHabitacion().isEmpty())
+                habitacionesConTripulantes.put(habitacion,habitacion.getTripulantesEnHabitacion());
+            }
+            Random nuevoPoder = new Random();
+            proximoPoder = nuevoPoder.nextInt(3,6);
+        }
 
     }
 
@@ -102,29 +120,41 @@ public class AmongUsPerception extends Perception{
         this.habitacionActual = habitacionActual;
     }
 
-    public List<Tripulante> getTripulantes_en_habitacion() {
-        return tripulantes_en_habitacion;
+
+
+    public HashMap<Room, Collection<Tripulante>> getHabitacionesConTripulantes() {
+        return habitacionesConTripulantes;
     }
 
-    public void setTripulantes_en_habitacion(List<Tripulante> tripulantes_en_habitacion) {
-        this.tripulantes_en_habitacion = tripulantes_en_habitacion;
+    public void setHabitacionesConTripulantes(HashMap<Room, Collection<Tripulante>> habitacionesConTripulantes) {
+        this.habitacionesConTripulantes = habitacionesConTripulantes;
     }
 
-    public Tarea getTarea() {
-        return Tarea;
+    public int getNroDePercepcion() {
+        return nroDePercepcion;
     }
 
-    public void setTarea(Tarea tarea) {
-        Tarea = tarea;
+    public void setNroDePercepcion(int nroDePercepcion) {
+        this.nroDePercepcion = nroDePercepcion;
     }
 
-    public HashMap<Room, Collection<Tripulante>> getTripulantes_Adyacentes() {
-        return Tripulantes_Adyacentes;
+    public int getProximoPoder() {
+        return proximoPoder;
     }
 
-    public void setTripulantes_Adyacentes(HashMap<Room, Collection<Tripulante>> tripulantes_Adyacentes) {
-        Tripulantes_Adyacentes = tripulantes_Adyacentes;
+    public void setProximoPoder(int proximoPoder) {
+        this.proximoPoder = proximoPoder;
     }
+
+    public Boolean getTareaEnHabitacion() {
+        return tareaEnHabitacion;
+    }
+
+    public void setTareaEnHabitacion(Boolean tareaEnHabitacion) {
+        this.tareaEnHabitacion = tareaEnHabitacion;
+    }
+
+   
 
 
 
