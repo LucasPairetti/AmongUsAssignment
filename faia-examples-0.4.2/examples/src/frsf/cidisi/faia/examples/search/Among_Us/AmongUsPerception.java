@@ -41,13 +41,10 @@ public class AmongUsPerception extends Perception{
     // percepcion. Esta al pedo. Es otra forma de inicializar una perception.
     @Override
     public void initPerception(Agent agent, Environment environment) {
-        AmongUsImpostorAgent agente= (AmongUsImpostorAgent) agent;
+        AmongUsImpostorAgent agente = (AmongUsImpostorAgent) agent;
         AmongUsEnviromentState state = (AmongUsEnviromentState) environment.getEnvironmentState();
         HashMap<Room, Collection<Room>> ship = state.getShip();
         
-
-        
-
         // Set agent position
         this.habitacionActual = state.getAgentPosition();
 
@@ -57,12 +54,12 @@ public class AmongUsPerception extends Perception{
         // Creo que la energía debe setearse en el state y sacarse de ahí.
         this.energia = state.getAgentEnergy();
         
-      //tarea en habitacion
+        //tarea en habitacion
 
-      if(state.getAgentPosition().getTarea()==null){
-        this.tareaEnHabitacion=false;
-      } else
-      this.tareaEnHabitacion=true;
+        if(state.getAgentPosition().getTarea()==null){
+            this.tareaEnHabitacion=false;
+        } else
+        this.tareaEnHabitacion=true;
 
 
         // tripulantes en habitaciones adyacentes

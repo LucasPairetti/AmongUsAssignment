@@ -61,7 +61,7 @@ public class AmongUsImpostorAgent extends SearchBasedAgent {
         //operators.addElement(new Realizar_Tarea(null));
         
 
-// Create the Problem which the Pacman will resolve
+        // Create the Problem which the Pacman will resolve
         Problem problem = new Problem(goal, state, operators);
         this.setProblem(problem);
 
@@ -133,8 +133,8 @@ public class AmongUsImpostorAgent extends SearchBasedAgent {
         this.getAgentState().updateState(p);
     }
     @Override
-    public AgentState getAgentState(){
-        return this.state;
+    public AmongUsImpostorState getAgentState(){
+        return state;
     }
     
 }

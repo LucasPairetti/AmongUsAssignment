@@ -3,16 +3,15 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Random;
-
+import java.util.Objects;
 import frsf.cidisi.faia.agent.Perception;
 import frsf.cidisi.faia.agent.search.SearchBasedAgentState;
 
 public class AmongUsImpostorState extends SearchBasedAgentState {
 
     private HashMap<Room, Collection<Room>> ship;
-    private int energia;
     private Room habitacionActual;
+    private int energia;
     private Collection<Room> habitacionesConectadas = new ArrayList<Room>();
     private int energia_Inicial;
     private int tripulantes_Vivos;
@@ -39,32 +38,30 @@ public class AmongUsImpostorState extends SearchBasedAgentState {
         this.habitacionesConectadas = init.getHabitacionesConectadas();
         this.tareas_Pendientes = init.getListaTareas();
         this.tareaEnHabitacion=init.getTareaEnHabitacion();
-        habitacionesConTripulantes= init.getHabitacionesConTripulantes();
+        this.habitacionesConTripulantes= init.getHabitacionesConTripulantes();
         
     }
 
 
 
     
-/* 
     public AmongUsImpostorState(HashMap<Room, Collection<Room>> ship, int energia, Room habitacionActual,
             Collection<Room> habitacionesConectadas, int energia_Inicial, int tripulantes_Vivos,
-            List<Tripulante> tripulantes_en_habitacion,
-            HashMap<Room, Collection<Tripulante>> tripulantes_Adyacentes) {
+            HashMap<Room, Collection<Tripulante>> habitacionesConTripulantes, List<Tarea> tareas_Pendientes2,
+            int nroDePercepcion, int proximoPoder, Boolean tareaEnHabitacion) {
         this.ship = ship;
         this.energia = energia;
         this.habitacionActual = habitacionActual;
         this.habitacionesConectadas = habitacionesConectadas;
         this.energia_Inicial = energia_Inicial;
         this.tripulantes_Vivos = tripulantes_Vivos;
-        this.tripulantes_en_habitacion = tripulantes_en_habitacion;
-        ArrayList<Tarea> listaTareas = new ArrayList<Tarea>();
-        listaTareas.add(Tarea.DESCONECTAR_SERVICIO_ELECTRICO);
-        listaTareas.add(Tarea.DESTRUIR_REACTOR);
-        listaTareas.add(Tarea.DESTRUIR_SALA_ARMAS);
-        this.tareas_Pendientes = listaTareas;
-        Tripulantes_Adyacentes = tripulantes_Adyacentes;
-    }*/
+        this.tareas_Pendientes = tareas_Pendientes2;
+        this.habitacionesConTripulantes = habitacionesConTripulantes;
+        this.nroDePercepcion = nroDePercepcion;
+        this.proximoPoder = proximoPoder;
+        this.tareaEnHabitacion = tareaEnHabitacion;
+        
+    }
 
     public AmongUsImpostorState(){
         initState();
@@ -115,7 +112,6 @@ public class AmongUsImpostorState extends SearchBasedAgentState {
     }
 
 
-
     public void setShip(HashMap<Room, Collection<Room>> ship) {
         this.ship = ship;
     }
@@ -141,7 +137,6 @@ public class AmongUsImpostorState extends SearchBasedAgentState {
     }
     
 
-    
     public int getNroDePercepcion() {
         return nroDePercepcion;
     }
@@ -167,7 +162,6 @@ public class AmongUsImpostorState extends SearchBasedAgentState {
     }
 
     
-
     @Override
     public void updateState(Perception p) {
        AmongUsPerception amongUsPerception = (AmongUsPerception) p;
@@ -182,15 +176,37 @@ public class AmongUsImpostorState extends SearchBasedAgentState {
     }
 
     @Override
-    public boolean equals(Object obj) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'equals'");
+    public boolean equals(Object o) {
+        
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        
+        AmongUsImpostorState that = (AmongUsImpostorState) o;
+        
+        if (energia != that.energia) return false;
+        if (energia_Inicial != that.energia_Inicial) return false;
+        if (tripulantes_Vivos != that.tripulantes_Vivos) return false;
+        if (nroDePercepcion != that.nroDePercepcion) return false;
+        if (proximoPoder != that.proximoPoder) return false;
+        if (!ship.equals(that.ship)) return false;
+        if (!habitacionActual.equals(that.habitacionActual)) return false;
+        if (!habitacionesConectadas.equals(that.habitacionesConectadas)) return false;
+        if (!Objects.equals(tareas_Pendientes, that.tareas_Pendientes)) return false;
+        if (!Objects.equals(habitacionesConTripulantes, that.habitacionesConTripulantes)) return false;
+        return Objects.equals(tareaEnHabitacion, that.tareaEnHabitacion);
+
     }
 
     @Override
     public SearchBasedAgentState clone() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'clone'");
+        
+        AmongUsImpostorState state = new AmongUsImpostorState( this.ship, this.energia, this.habitacionActual,
+        this.habitacionesConectadas, this.energia_Inicial, this.tripulantes_Vivos,
+        this.habitacionesConTripulantes, this.tareas_Pendientes,
+        this.nroDePercepcion, this.proximoPoder, this.tareaEnHabitacion);
+
+        return state;
+        
     }
    
     @Override
@@ -198,8 +214,8 @@ public class AmongUsImpostorState extends SearchBasedAgentState {
         String str = "";
         String habitaciones_conectadas="";
         String TareasPorRealizar="";
-        str = str + " position=" + getHabitacionActual().getNombre() +"\"\n";
-        str = str + " energy=" + getEnergia() + "\"\n";
+        str = str + " position=" + this.getHabitacionActual().getNombre() +"\"\n";
+        str = str + " energy=" + this.getEnergia() + "\"\n";
         for(Room habitacionConectada: habitacionesConectadas){
             habitaciones_conectadas.concat(" "+ habitacionConectada.getNombre()+ "\"\n");
         }
@@ -212,14 +228,5 @@ public class AmongUsImpostorState extends SearchBasedAgentState {
         str = str + "tareas pendientes= " + TareasPorRealizar + "\"\n";
         return str;
     }
-    
-
-   
-
-
-
-    
-
-    
     
 }

@@ -1,11 +1,8 @@
 package frsf.cidisi.faia.examples.search.Among_Us;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.Random;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import frsf.cidisi.faia.state.EnvironmentState;
@@ -37,9 +34,6 @@ public AmongUsEnviromentState(){
         // Set agent random parameters
         this.setAgentPosition(init.getAgentPosition());
         this.setAgentEnergy(init.getAgentEnergy());
-
-       
-
 
     }
 
@@ -102,4 +96,4 @@ public AmongUsEnviromentState(){
         return new ArrayList<>(ship.get(nodo));
     }
 
-    }
+}

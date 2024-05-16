@@ -106,6 +106,7 @@ public class Inicializador {
         ArrayList<Room> keys = new ArrayList<Room>(ship.keySet());
         Random r = new Random();
         this.agentPosition = keys.get(r.nextInt(1, 21));
+        System.out.println(agentPosition);
         this.agentEnergy = r.nextInt(30, 151);
         this.cantTripulantes = 7;
 
