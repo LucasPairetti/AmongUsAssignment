@@ -1,4 +1,4 @@
-package frsf.cidisi.faia.examples.search.Among_Us.actions;
+        package frsf.cidisi.faia.examples.search.Among_Us.actions;
 
 import frsf.cidisi.faia.examples.search.Among_Us.*;
 import frsf.cidisi.faia.examples.search.pacman.*;
@@ -7,6 +7,8 @@ import frsf.cidisi.faia.agent.search.SearchBasedAgentState;
 import frsf.cidisi.faia.state.AgentState;
 import frsf.cidisi.faia.state.EnvironmentState;
 
+
+/*deprecated */
 public class Realizar_Tarea extends SearchAction{
 
     private Tarea tarea;

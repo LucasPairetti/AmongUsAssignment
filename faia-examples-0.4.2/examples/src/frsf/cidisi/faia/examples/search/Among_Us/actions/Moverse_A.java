@@ -10,6 +10,8 @@ import frsf.cidisi.faia.agent.search.SearchBasedAgentState;
 import frsf.cidisi.faia.state.AgentState;
 import frsf.cidisi.faia.state.EnvironmentState;
 
+
+/*deprecated */
 public class Moverse_A extends SearchAction {
 
     private Room habitacionSiguiente;
