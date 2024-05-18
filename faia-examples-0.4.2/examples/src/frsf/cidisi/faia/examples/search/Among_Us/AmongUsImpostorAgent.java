@@ -15,12 +15,10 @@ import frsf.cidisi.faia.examples.search.Among_Us.AmongUsImpostorAgent;
 import frsf.cidisi.faia.examples.search.Among_Us.actions.*;
 import frsf.cidisi.faia.solver.search.DepthFirstSearch;
 import frsf.cidisi.faia.solver.search.Search;
-import frsf.cidisi.faia.state.AgentState;
 
 public class AmongUsImpostorAgent extends SearchBasedAgent {
 
     private AmongUsGoal goal;
-    private AmongUsImpostorState state;
 
 
     public AmongUsImpostorAgent(){
@@ -29,8 +27,9 @@ public class AmongUsImpostorAgent extends SearchBasedAgent {
         this.goal = new AmongUsGoal();
 
         // Impostor agent state
-        this.state = new AmongUsImpostorState();
-        
+        AmongUsImpostorState agentState = new AmongUsImpostorState();
+        this.setAgentState(agentState);
+
         // Create the operators
         Vector<SearchAction> operators = new Vector<SearchAction>();
         operators.addElement(new matar_Tripulante());
@@ -62,7 +61,7 @@ public class AmongUsImpostorAgent extends SearchBasedAgent {
         
 
         // Create the Problem which the Pacman will resolve
-        Problem problem = new Problem(goal, state, operators);
+        Problem problem = new Problem(goal, (AmongUsImpostorState) this.getAgentState(), operators);
         this.setProblem(problem);
 
     }
@@ -76,29 +75,6 @@ public class AmongUsImpostorAgent extends SearchBasedAgent {
 
         // Create the search strategy
         DepthFirstSearch strategy = new DepthFirstSearch();
-
-        /**
-         * Another search strategy examples:
-         * 
-         * Depth First Search:
-         * DepthFirstSearch strategy = new DepthFirstSearch();
-         * 
-         * Breath First Search:
-         * BreathFirstSearch strategy = new BreathFirstSearch();
-         * 
-         * Uniform Cost:
-         * IStepCostFunction costFunction = new CostFunction();
-         * UniformCostSearch strategy = new UniformCostSearch(costFunction);
-         * 
-         * A Star Search:
-         * IStepCostFunction cost = new CostFunction();
-         * IEstimatedCostFunction heuristic = new Heuristic();
-         * AStarSearch strategy = new AStarSearch(cost, heuristic);
-         * 
-         * Greedy Search:
-         * IEstimatedCostFunction heuristic = new Heuristic();
-         * GreedySearch strategy = new GreedySearch(heuristic);
-         */
 
         // Create a Search object with the strategy
         Search searchSolver = new Search(strategy);
@@ -132,9 +108,10 @@ public class AmongUsImpostorAgent extends SearchBasedAgent {
     public void see(Perception p) {
         this.getAgentState().updateState(p);
     }
+
     @Override
-    public AmongUsImpostorState getAgentState(){
-        return state;
+    public String toString() {
+        return "AmongUsImpostorAgent [goal=" + goal + ", state=" + state + ", solver=" + solver + "]";
     }
     
 }

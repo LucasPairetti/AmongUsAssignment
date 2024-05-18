@@ -6,24 +6,18 @@ public class AmongUsMain {
     public static void main(String[] args) throws PrologConnectorException {
         
         AmongUsImpostorAgent impostor = new AmongUsImpostorAgent();
-            
-        AmongUsEnviroment amongUsEnvironment = new AmongUsEnviroment();
         
-        System.out.println("this is the impostor:");
-        // No anda get agent state
+        System.out.println("this is the agent in main:");
+        System.out.println(impostor);
+        System.out.println("this is my state in main:");
         System.out.println(impostor.getAgentState());
-        System.out.println("llegue");
-        System.out.println("this is the environment:");
-        System.out.println(amongUsEnvironment);
 
+        AmongUsEnviroment amongUsEnvironment = new AmongUsEnviroment();
+    
         SearchBasedAgentSimulator simulator =
-            new SearchBasedAgentSimulator(amongUsEnvironment, impostor);
-            
-        simulator.start();
-       
+                new SearchBasedAgentSimulator(amongUsEnvironment, impostor);
         
-        //aca ando intentando ejecutar un agenteState y no me lo inicializa entero
-        //igual en un ratito salgo a buscar el mic, me lo deje en lo de una amiga anoche
+        simulator.start();
         
     }
 }

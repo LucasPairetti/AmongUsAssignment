@@ -214,22 +214,24 @@ public class AmongUsImpostorState extends SearchBasedAgentState {
         
         String str = "";
         
-        String habitaciones_conectadas="";
-        String TareasPorRealizar="";
-        str = str + " position=" + this.getHabitacionActual().getNombre() +"\"\n";
+        String habitaciones_conectadas= this.getHabitacionesConectadas().toString();
+        String TareasPorRealizar=this.getTareas_Pendientes().toString();
+        str = str + " position=" + this.getHabitacionActual().getNombre() +"\n";
         str = str + " energy=" + this.getEnergia() + "\"\n";
-        for(Room habitacionConectada: habitacionesConectadas){
-            habitaciones_conectadas.concat(" "+ habitacionConectada.getNombre()+ "\"\n");
-        }
+        str = str + " habitaciones conectadas=" + habitaciones_conectadas + "\n";
+        str = str + " tareasPorRealizar=" + TareasPorRealizar + "\n";
+        // for(Room habitacionConectada: habitacionesConectadas){
+        //     habitaciones_conectadas.concat(" "+ habitacionConectada.getNombre()+ "\"\n");
+        // }
        
-        for(Tarea tareasRealizables: tareas_Pendientes){
-            TareasPorRealizar.concat(" "+  tareasRealizables.name()+ "\"\n");
-        }
+        // for(Tarea tareasRealizables: tareas_Pendientes){
+        //     TareasPorRealizar.concat(" "+  tareasRealizables.name()+ "\"\n");
+        // }
         
         
-        str = str + "habitaciones conectadas: "+ "\"\n" + habitaciones_conectadas+ "\"\n";
-        str = str + "tripulantes vivos= " + tripulantes_Vivos + "\"\n";
-        str = str + "tareas pendientes= " + TareasPorRealizar + "\"\n";
+        // str = str + "habitaciones conectadas: "+ "\"\n" + habitaciones_conectadas+ "\"\n";
+        // str = str + "tripulantes vivos= " + tripulantes_Vivos + "\"\n";
+        // str = str + "tareas pendientes= " + TareasPorRealizar + "\"\n";
         
         return str;
         

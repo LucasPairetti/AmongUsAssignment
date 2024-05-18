@@ -67,6 +67,11 @@ public abstract class GoalBasedAgentSimulator extends Simulator {
          */
         do {
 
+            System.out.println("This is the agent:");
+            System.out.println(agent);
+            System.out.println("This is the state:");
+            System.out.println(agent.getAgentState());
+
             System.out.println("------------------------------------");
 
             System.out.println("Sending perception to agent...");
