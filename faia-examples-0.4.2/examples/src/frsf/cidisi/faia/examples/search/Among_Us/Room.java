@@ -11,7 +11,7 @@ public class Room {
         this.id = id;
         this.nombre = nombre;
         this.tripulantesEnHabitacion = new ArrayList<Tripulante> ();
-       
+        this.tarea = null;
       
     }
     

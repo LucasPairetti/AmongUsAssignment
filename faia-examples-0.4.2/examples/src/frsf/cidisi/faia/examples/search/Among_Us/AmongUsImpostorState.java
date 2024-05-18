@@ -169,7 +169,7 @@ public class AmongUsImpostorState extends SearchBasedAgentState {
         this.energia=amongUsPerception.getEnergia();
         this.habitacionActual=amongUsPerception.getHabitacionActual();
         this.habitacionesConectadas=amongUsPerception.getHabitacionesSiguientes();
-        //tarea? hara falta otro atributo de Habitaicon con la tarea?
+        //tarea? 
         this.nroDePercepcion = amongUsPerception.getNroDePercepcion();
         this.proximoPoder = amongUsPerception.getProximoPoder();
         this.tareaEnHabitacion=amongUsPerception.getTareaEnHabitacion();
@@ -211,7 +211,9 @@ public class AmongUsImpostorState extends SearchBasedAgentState {
    
     @Override
     public String toString() {
+        
         String str = "";
+        /*
         String habitaciones_conectadas="";
         String TareasPorRealizar="";
         str = str + " position=" + this.getHabitacionActual().getNombre() +"\"\n";
@@ -219,14 +221,20 @@ public class AmongUsImpostorState extends SearchBasedAgentState {
         for(Room habitacionConectada: habitacionesConectadas){
             habitaciones_conectadas.concat(" "+ habitacionConectada.getNombre()+ "\"\n");
         }
+       /* 
         for(Tarea tareasRealizables: tareas_Pendientes){
             TareasPorRealizar.concat(" "+  tareasRealizables.name()+ "\"\n");
         }
-
+        
+        
         str = str + "habitaciones conectadas: "+ "\"\n" + habitaciones_conectadas+ "\"\n";
         str = str + "tripulantes vivos= " + tripulantes_Vivos + "\"\n";
         str = str + "tareas pendientes= " + TareasPorRealizar + "\"\n";
+        */
         return str;
+        
     }
+    //directameente no se inicializó, tiene todo en null al aprecer
+
     
 }

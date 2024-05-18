@@ -16,10 +16,11 @@ public class Inicializador {
     private Collection<Room> habitacionesConectadas;
     private int cantTripulantes;
     private HashMap<Room, Collection<Room>> ship;
-    private ArrayList<Tarea> listaTareas;
+    private List<Tarea> listaTareas;
     private HashMap<Room, Collection<Tripulante>> habitacionesConTripulantes;
     private Boolean tareaEnHabitacion;
    
+    private AmongUsImpostorState stateTest;
     //habilidad especial
     private int nroDePercepcion;
     private int proximoPoder;
@@ -53,23 +54,53 @@ public class Inicializador {
         else return instance;
     }
     
+
+//voy a intentar plasmar todo el agente del init en el main a ver que onda
+    
+    public String getStateTest() {
+        String str = "";
+        
+        String habitaciones_conectadas="";
+        String TareasPorRealizar="";
+        str = str + " position=" + this.agentPosition.getNombre() +"\"\n";
+        str = str + " energy=" + this.agentEnergy + "\"\n";
+        for(Room habitacionConectada: habitacionesConectadas){
+            habitaciones_conectadas.concat(" "+ habitacionConectada.getNombre()+ "\"\n");
+        }
+        //por que esta en null?
+        /* 
+        for(Tarea tareasRealizables: listaTareas){
+            TareasPorRealizar.concat(" "+  tareasRealizables.name()+ "\"\n");
+        }
+        */
+        
+        str = str + "habitaciones conectadas: "+ "\"\n" + habitaciones_conectadas+ "\"\n";
+        str = str + "tripulantes vivos= " + cantTripulantes + "\"\n";
+        str = str + "tareas pendientes= " + TareasPorRealizar + "\"\n";
+        
+        return str;
+    }
+
+
+
+
     public Inicializador() {
 
         // Initialize ship
         ship = new HashMap<Room, Collection<Room>>();
 
-        // Define rooms
+        // Define rooms -> aca no pusimos las tareas
         this.nodo1 = new Room(1, "Cafetería");
-        this.nodo2 = new Room(2, "Weapons");
+        this.nodo2 = new Room(2, "Weapons",Tarea.DESTRUIR_SALA_ARMAS);
         this.nodo3 = new Room(3, "O2");
         this.nodo4 = new Room(4, "Navigation");
         this.nodo5 = new Room(5, "Shields");
         this.nodo6 = new Room(6, "Communication");
         this.nodo7 = new Room(7, "Storage");
         this.nodo8 = new Room(8, "Admin");
-        this.nodo9 = new Room(9, "Electrical");
+        this.nodo9 = new Room(9, "Electrical",Tarea.DESCONECTAR_SERVICIO_ELECTRICO);
         this.nodo10 = new Room(10, "Lower Engine");
-        this.nodo11 = new Room(11, "Reactor");
+        this.nodo11 = new Room(11, "Reactor",Tarea.DESTRUIR_REACTOR);
         this.nodo12 = new Room(12, "Security");
         this.nodo13 = new Room(13, "Upper Engine");
         this.nodo14 = new Room(14, "Medbay");
@@ -125,8 +156,8 @@ public class Inicializador {
 
 
 
-        //tareas
-        ArrayList<Tarea> listaTareas = new ArrayList<Tarea>();
+        //tareas -> estas son las pendientes 
+        List<Tarea> listaTareas = new ArrayList<Tarea>();
         listaTareas.add(Tarea.DESCONECTAR_SERVICIO_ELECTRICO);
         listaTareas.add(Tarea.DESTRUIR_REACTOR);
         listaTareas.add(Tarea.DESTRUIR_SALA_ARMAS);
@@ -154,7 +185,7 @@ public class Inicializador {
           this.nroDePercepcion=0;
           this.proximoPoder= nro.nextInt(3, 6);
 
-
+          stateTest = new AmongUsImpostorState(this.ship, agentEnergy, agentPosition, habitacionesConectadas, agentEnergy, agentEnergy, habitacionesConTripulantes, listaTareas, agentEnergy, agentEnergy, tareaEnHabitacion);
     }
 
     public int getAgentEnergy() {
@@ -173,7 +204,7 @@ public class Inicializador {
         return ship;
     }
 
-    public ArrayList<Tarea> getListaTareas() {
+    public List<Tarea> getListaTareas() {
         return listaTareas;
     }
 

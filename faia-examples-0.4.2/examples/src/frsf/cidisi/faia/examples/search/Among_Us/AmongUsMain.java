@@ -8,7 +8,7 @@ public class AmongUsMain {
         AmongUsImpostorAgent impostor = new AmongUsImpostorAgent();
             
         AmongUsEnviroment amongUsEnvironment = new AmongUsEnviroment();
-        
+       /* 
         System.out.println("this is the impostor:");
         // No anda get agent state
         System.out.println(impostor.getAgentState());
@@ -20,6 +20,12 @@ public class AmongUsMain {
             new SearchBasedAgentSimulator(amongUsEnvironment, impostor);
             
         simulator.start();
+        */ 
 
+        Inicializador init = Inicializador.getInstance();
+        System.out.println(init.getStateTest());
     }
 }
+
+
+//Intento hacer una kill ahi
