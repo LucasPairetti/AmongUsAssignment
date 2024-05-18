@@ -48,6 +48,7 @@ public class Inicializador {
     private final Room nodo19;
     private final Room nodo20;
 
+   
     public static Inicializador getInstance() {
         if(instance==null) {instance=new Inicializador();
         return instance;}
@@ -64,9 +65,7 @@ public class Inicializador {
         String TareasPorRealizar="";
         str = str + " position=" + this.agentPosition.getNombre() +"\"\n";
         str = str + " energy=" + this.agentEnergy + "\"\n";
-        for(Room habitacionConectada: habitacionesConectadas){
-            habitaciones_conectadas.concat(" "+ habitacionConectada.getNombre()+ "\"\n");
-        }
+       
         //por que esta en null?
         /* 
         for(Tarea tareasRealizables: listaTareas){
@@ -74,10 +73,10 @@ public class Inicializador {
         }
         */
         
-        str = str + "habitaciones conectadas: "+ "\"\n" + habitaciones_conectadas+ "\"\n";
+        str = str + "habitaciones conectadas: "+ "\"\n" + habitacionesConectadas.toString()+ "\"\n";
         str = str + "tripulantes vivos= " + cantTripulantes + "\"\n";
-        str = str + "tareas pendientes= " + TareasPorRealizar + "\"\n";
-        
+        str = str + "tareas pendientes= " + "\"\n";
+        System.out.println(listaTareas);
         return str;
     }
 
@@ -133,6 +132,8 @@ public class Inicializador {
         ship.put(nodo19,new ArrayList<Room>(Arrays.asList(nodo1,nodo13,nodo14)));
         ship.put(nodo20,new ArrayList<Room>(Arrays.asList(nodo1,nodo7,nodo8)));
 
+
+
         // Params
         ArrayList<Room> keys = new ArrayList<Room>(ship.keySet());
         Random r = new Random();
@@ -151,16 +152,8 @@ public class Inicializador {
         }
 
         //habitaciones conectadas
-
+        
         this.habitacionesConectadas= ship.get(this.agentPosition);
-
-
-
-        //tareas -> estas son las pendientes 
-        List<Tarea> listaTareas = new ArrayList<Tarea>();
-        listaTareas.add(Tarea.DESCONECTAR_SERVICIO_ELECTRICO);
-        listaTareas.add(Tarea.DESTRUIR_REACTOR);
-        listaTareas.add(Tarea.DESTRUIR_SALA_ARMAS);
         
         //primeros tripulantes en habitacionews
         
@@ -175,6 +168,14 @@ public class Inicializador {
             }
 
         }
+
+        //tareas -> estas son las pendientes 
+        List<Tarea> listaTareas = new ArrayList<Tarea>();
+        listaTareas.add(Tarea.DESCONECTAR_SERVICIO_ELECTRICO);
+        listaTareas.add(Tarea.DESTRUIR_REACTOR);
+        listaTareas.add(Tarea.DESTRUIR_SALA_ARMAS);
+        this.listaTareas=listaTareas;
+        
 
         if(agentPosition.getTarea()==null){
             this.tareaEnHabitacion=false;

@@ -213,7 +213,7 @@ public class AmongUsImpostorState extends SearchBasedAgentState {
     public String toString() {
         
         String str = "";
-        /*
+        
         String habitaciones_conectadas="";
         String TareasPorRealizar="";
         str = str + " position=" + this.getHabitacionActual().getNombre() +"\"\n";
@@ -221,7 +221,7 @@ public class AmongUsImpostorState extends SearchBasedAgentState {
         for(Room habitacionConectada: habitacionesConectadas){
             habitaciones_conectadas.concat(" "+ habitacionConectada.getNombre()+ "\"\n");
         }
-       /* 
+       
         for(Tarea tareasRealizables: tareas_Pendientes){
             TareasPorRealizar.concat(" "+  tareasRealizables.name()+ "\"\n");
         }
@@ -230,7 +230,7 @@ public class AmongUsImpostorState extends SearchBasedAgentState {
         str = str + "habitaciones conectadas: "+ "\"\n" + habitaciones_conectadas+ "\"\n";
         str = str + "tripulantes vivos= " + tripulantes_Vivos + "\"\n";
         str = str + "tareas pendientes= " + TareasPorRealizar + "\"\n";
-        */
+        
         return str;
         
     }
