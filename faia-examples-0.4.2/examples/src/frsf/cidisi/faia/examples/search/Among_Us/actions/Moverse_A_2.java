@@ -55,6 +55,7 @@ public class Moverse_A_2 extends SearchAction{
 
         enviromentState.setAgentPosition(habitacionSiguiente);
         enviromentState.setAgentEnergy(impostorState.getEnergia() - 1);
+        enviromentState.setHabitacionesConectadas((List<Room>) impostorState.getShip().get(habitacionSiguiente));
 
         return enviromentState;
     }

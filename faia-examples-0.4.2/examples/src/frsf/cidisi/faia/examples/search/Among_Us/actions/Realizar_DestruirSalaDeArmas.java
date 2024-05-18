@@ -14,6 +14,9 @@ public class Realizar_DestruirSalaDeArmas extends SearchAction {
     @Override
     public SearchBasedAgentState execute(SearchBasedAgentState s) {
         AmongUsImpostorState impostorState = (AmongUsImpostorState) s;
+        if(impostorState.getTareaEnHabitacion()==false){
+            return null;
+        }
         if (!impostorState.getHabitacionActual().getTarea().equals(tarea))
             return null;
         else {
@@ -30,7 +33,8 @@ public class Realizar_DestruirSalaDeArmas extends SearchAction {
     public EnvironmentState execute(AgentState ast, EnvironmentState est) {
         AmongUsEnviromentState environmentState = (AmongUsEnviromentState) est;
         AmongUsImpostorState impostorState = (AmongUsImpostorState) ast;
-
+        if (impostorState.getHabitacionActual().getTarea()==null)
+        return null;
         if (!impostorState.getHabitacionActual().getTarea().equals(tarea))
             return null;
         else {

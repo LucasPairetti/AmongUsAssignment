@@ -10,7 +10,7 @@ import frsf.cidisi.faia.state.AgentState;
 import frsf.cidisi.faia.state.EnvironmentState;
 
 public class matar_Tripulante extends SearchAction {
-
+    
     @Override
     public SearchBasedAgentState execute(SearchBasedAgentState s) {
        AmongUsImpostorState impostorState = (AmongUsImpostorState) s;
@@ -40,6 +40,11 @@ public class matar_Tripulante extends SearchAction {
        AmongUsEnviromentState enviromentState = (AmongUsEnviromentState) est;
        AmongUsImpostorState impostorState = (AmongUsImpostorState) ast;
        enviromentState.setAgentEnergy(impostorState.getEnergia()-1);
+        enviromentState.setTripulantes_Vivos(impostorState.getTripulantes_Vivos()-1);
+        Tripulante victima= enviromentState.getAgentPosition().getTripulantesEnHabitacion().get(0);
+        victima.setVivo(false);
+        enviromentState.getAgentPosition().getTripulantesEnHabitacion().remove(victima);
+       
        return enviromentState;
     }
 

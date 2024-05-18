@@ -165,15 +165,8 @@ public class AmongUsImpostorState extends SearchBasedAgentState {
     @Override
     public void updateState(Perception p) {
 
-        System.out.println("Pre Update State!");
-        System.out.println(habitacionActual);
-
-
        AmongUsPerception amongUsPerception = (AmongUsPerception) p;
 
-
-       System.out.println(" hay percepcion?");
-        System.out.println(amongUsPerception.getTareaEnHabitacion());
         this.habitacionesConTripulantes=amongUsPerception.getHabitacionesConTripulantes();
         this.energia=amongUsPerception.getEnergia();
         this.habitacionActual=amongUsPerception.getHabitacionActual();
@@ -183,8 +176,7 @@ public class AmongUsImpostorState extends SearchBasedAgentState {
         this.proximoPoder = amongUsPerception.getProximoPoder();
         this.tareaEnHabitacion=amongUsPerception.getTareaEnHabitacion();
 
-        System.out.println("Post Update State!");
-        System.out.println(habitacionActual);
+
     }
 
     @Override

@@ -14,7 +14,7 @@ public class AmongUsPerception extends Perception{
 
     // Evaluar si pasarlo a ingles o no, porque el resto de clases esta en ingles.
     private Room habitacionActual;
-    private List<Room> habitacionesSiguientes;
+    private Collection<Room> habitacionesSiguientes;
     private int energia;
 
     //esta las agregué hoy 16/5 porque necesitamos saber si la habitacion tiene o no una tarea y saber si las habitaciones de alrededor tienen tripulantes
@@ -91,12 +91,11 @@ public class AmongUsPerception extends Perception{
             proximoPoder = nuevoPoder.nextInt(3,6);
         }
 
-        System.out.println("InitPerception!!!!");
-        System.out.println(this.habitacionActual);
+
     }
 
-    public void setHabitacionesSiguientes(List<Room> habitacionesSiguientes) {
-        this.habitacionesSiguientes = habitacionesSiguientes;
+    public void setHabitacionesSiguientes(Collection<Room> collection) {
+        this.habitacionesSiguientes = collection;
     }
 
     public int getEnergia() {
@@ -107,7 +106,7 @@ public class AmongUsPerception extends Perception{
         return habitacionActual;
     }
 
-    public List<Room> getHabitacionesSiguientes() {
+    public Collection<Room> getHabitacionesSiguientes() {
         return habitacionesSiguientes;
     }
 
