@@ -21,8 +21,3 @@ public class AmongUsMain {
         
     }
 }
-
-
-//TOMI fijate en la percepcion capaz
-
-// si soyyy

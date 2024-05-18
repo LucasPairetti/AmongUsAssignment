@@ -164,7 +164,16 @@ public class AmongUsImpostorState extends SearchBasedAgentState {
     
     @Override
     public void updateState(Perception p) {
+
+        System.out.println("Pre Update State!");
+        System.out.println(habitacionActual);
+
+
        AmongUsPerception amongUsPerception = (AmongUsPerception) p;
+
+
+       System.out.println(" hay percepcion?");
+        System.out.println(amongUsPerception.getTareaEnHabitacion());
         this.habitacionesConTripulantes=amongUsPerception.getHabitacionesConTripulantes();
         this.energia=amongUsPerception.getEnergia();
         this.habitacionActual=amongUsPerception.getHabitacionActual();
@@ -173,6 +182,9 @@ public class AmongUsImpostorState extends SearchBasedAgentState {
         this.nroDePercepcion = amongUsPerception.getNroDePercepcion();
         this.proximoPoder = amongUsPerception.getProximoPoder();
         this.tareaEnHabitacion=amongUsPerception.getTareaEnHabitacion();
+
+        System.out.println("Post Update State!");
+        System.out.println(habitacionActual);
     }
 
     @Override
@@ -200,24 +212,41 @@ public class AmongUsImpostorState extends SearchBasedAgentState {
     @Override
     public SearchBasedAgentState clone() {
         
-        AmongUsImpostorState state = new AmongUsImpostorState( this.ship, this.energia, this.habitacionActual,
+        AmongUsImpostorState newState = new AmongUsImpostorState( this.ship, this.energia, this.habitacionActual,
         this.habitacionesConectadas, this.energia_Inicial, this.tripulantes_Vivos,
         this.habitacionesConTripulantes, this.tareas_Pendientes,
         this.nroDePercepcion, this.proximoPoder, this.tareaEnHabitacion);
 
-        return state;
+        return newState;
         
     }
    
     @Override
     public String toString() {
         
+       
         String str = "";
+
+        /*
+         *   private HashMap<Room, Collection<Room>> ship;
+    private Room habitacionActual;
+    private int energia;
+    private Collection<Room> habitacionesConectadas = new ArrayList<Room>();
+    private int energia_Inicial;
+    private int tripulantes_Vivos;
+    private List<Tarea> tareas_Pendientes;
+    private HashMap<Room, Collection<Tripulante>> habitacionesConTripulantes;
+    private Boolean tareaEnHabitacion;
+    //habilidad especial
+    private int nroDePercepcion;
+    private int proximoPoder;
+
+         */
         
         String habitaciones_conectadas= this.getHabitacionesConectadas().toString();
         String TareasPorRealizar=this.getTareas_Pendientes().toString();
-        str = str + " position=" + this.getHabitacionActual().getNombre() +"\n";
-        str = str + " energy=" + this.getEnergia() + "\"\n";
+        str = str + " position=" + this.habitacionActual.getNombre() +"\n";
+        str = str + " energy=" + this.energia + "\"\n";
         str = str + " habitaciones conectadas=" + habitaciones_conectadas + "\n";
         str = str + " tareasPorRealizar=" + TareasPorRealizar + "\n";
         // for(Room habitacionConectada: habitacionesConectadas){

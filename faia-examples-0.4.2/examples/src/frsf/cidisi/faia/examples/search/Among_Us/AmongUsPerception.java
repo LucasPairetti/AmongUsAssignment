@@ -91,6 +91,8 @@ public class AmongUsPerception extends Perception{
             proximoPoder = nuevoPoder.nextInt(3,6);
         }
 
+        System.out.println("InitPerception!!!!");
+        System.out.println(this.habitacionActual);
     }
 
     public void setHabitacionesSiguientes(List<Room> habitacionesSiguientes) {
