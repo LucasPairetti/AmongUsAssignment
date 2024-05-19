@@ -81,12 +81,11 @@ public class AmongUsEnviroment extends Environment {
 
     @Override
     public boolean agentFailed(Action actionReturned) {
-
-        AmongUsEnviromentState state =
-                this.getEnvironmentState();
-
+        
+        AmongUsEnviromentState state = this.getEnvironmentState();
+                
         int agentEnergy = state.getAgentEnergy();
-
+        
         // return true or false depending on if the agent run out of energy.
         // GET SURE THE AGENT'S ENERGY IS UPDATED WITH ACTIONS!!!
         return agentEnergy <= 0 ? true : false;

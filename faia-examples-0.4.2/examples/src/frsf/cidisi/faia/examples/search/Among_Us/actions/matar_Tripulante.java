@@ -46,14 +46,20 @@ public class matar_Tripulante extends SearchAction {
     public EnvironmentState execute(AgentState ast, EnvironmentState est) {
        AmongUsEnviromentState enviromentState = (AmongUsEnviromentState) est;
        AmongUsImpostorState impostorState = (AmongUsImpostorState) ast;
-       enviromentState.setAgentEnergy(impostorState.getEnergia()-1);
-        enviromentState.setTripulantes_Vivos(impostorState.getTripulantes_Vivos()-1);
+       
+        if(!impostorState.getHabitacionesConTripulantes()
+        .containsKey(impostorState.getHabitacionActual())) return null;
+        else{
+
         Tripulante victima= enviromentState.getAgentPosition().getTripulantesEnHabitacion().get(0);
         victima.setVivo(false);
         enviromentState.getHabitacionesConTripulantes().remove(enviromentState.getAgentPosition());
         enviromentState.getAgentPosition().getTripulantesEnHabitacion().remove(victima);
+        enviromentState.setAgentEnergy(impostorState.getEnergia()-1);
+        enviromentState.setTripulantes_Vivos(impostorState.getTripulantes_Vivos()-1);
         
        return enviromentState;
+    }
     }
 
     @Override
