@@ -15,12 +15,8 @@ public class AmongUsPerception extends Perception{
     private Room habitacionActual;
     private Collection<Room> habitacionesSiguientes;
     private int energia;
-
-    //esta las agregué hoy 16/5 porque necesitamos saber si la habitacion tiene o no una tarea y saber si las habitaciones de alrededor tienen tripulantes
-
     private HashMap<Room, Collection<Tripulante>> habitacionesConTripulantes;
     private Boolean tareaEnHabitacion;
-    
      //habilidad especial
      private int nroDePercepcion;
      private int proximoPoder;
@@ -163,6 +159,14 @@ public class AmongUsPerception extends Perception{
 
     public void setTareaEnHabitacion(Boolean tareaEnHabitacion) {
         this.tareaEnHabitacion = tareaEnHabitacion;
+    }
+
+    @Override
+    public String toString() {
+        return "AmongUsPerception [habitacionActual=" + habitacionActual + ", habitacionesSiguientes="
+                + habitacionesSiguientes + ", energia=" + energia + ", habitacionesConTripulantes="
+                + habitacionesConTripulantes + ", tareaEnHabitacion=" + tareaEnHabitacion + ", nroDePercepcion="
+                + nroDePercepcion + ", proximoPoder=" + proximoPoder + "]";
     }
 
    

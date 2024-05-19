@@ -40,7 +40,7 @@ public class Realizar_DestruirSalaDeArmas extends SearchAction {
         else {
 
             environmentState.setAgentEnergy(impostorState.getEnergia() - 1);
-
+            environmentState.getTareas_Pendientes().remove(tarea);
             return environmentState;
         }
 

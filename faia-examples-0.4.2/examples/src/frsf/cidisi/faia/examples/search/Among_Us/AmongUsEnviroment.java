@@ -111,4 +111,7 @@ public class AmongUsEnviroment extends Environment {
         return this.getEnvironmentState().getSuccesors(nodo);
     }
 
+
+    
+
 }

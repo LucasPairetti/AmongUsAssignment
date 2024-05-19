@@ -15,7 +15,7 @@ public class Realizar_DestruirReactor extends SearchAction {
     @Override
     public SearchBasedAgentState execute(SearchBasedAgentState s) {
         AmongUsImpostorState impostorState = (AmongUsImpostorState) s;
-        if(impostorState.getTareaEnHabitacion()==false){
+        if(impostorState.getHabitacionActual().getTarea()==null){
             return null;
         }
         if (!impostorState.getHabitacionActual().getTarea().equals(tarea))
@@ -24,7 +24,7 @@ public class Realizar_DestruirReactor extends SearchAction {
 
             impostorState.getTareas_Pendientes().remove(tarea);
             impostorState.setEnergia(impostorState.getEnergia() - 1);
-
+            
             return impostorState;
         }
 
@@ -41,7 +41,7 @@ public class Realizar_DestruirReactor extends SearchAction {
         else {
 
             environmentState.setAgentEnergy(impostorState.getEnergia() - 1);
-
+            environmentState.getTareas_Pendientes().remove(tarea);
             return environmentState;
         }
 
