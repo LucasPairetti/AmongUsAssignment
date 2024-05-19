@@ -90,7 +90,6 @@ public class Search extends Solve {
         tree.setAgentState(agentState);
 
         searchStrategy.initNodesToExpandList(tree);
-
         boolean goal = false;
 
         // This iteration will occur while nodesToExpand have nodes and the actual node is not a goal node.-
@@ -112,7 +111,10 @@ public class Search extends Solve {
                     SearchBasedAgentState ast = firstNode.getAgentState().clone();
                     // This is the action that can generate a new node.- 
                     SearchAction action = actionList.elementAt(i);
+                    // Ejecuta muchas veces este sysou señal que piensa.
+                    System.out.println(action.toString());
                     ast = action.execute(ast);
+                    
                     // TODO: HAY QUE VER SI CONVIENE QUE CUANDO EL OPERADOR NO PUEDA SER 
                     // EJECUTADO DEVUELVA UN OBJETO EN LUGAR DE NULL.
                     if (ast != null) {	// If the action was correctly executed.-

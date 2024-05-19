@@ -2,7 +2,6 @@ package frsf.cidisi.faia.examples.search.Among_Us;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Random;
 
 import frsf.cidisi.faia.agent.Agent;
@@ -55,42 +54,56 @@ public class AmongUsPerception extends Perception{
         this.energia = state.getAgentEnergy();
         
         //tarea en habitacion
-
         if(state.getAgentPosition().getTarea()==null){
             this.tareaEnHabitacion=false;
         } else
         this.tareaEnHabitacion=true;
 
+        // Mapa general para updatear
+        HashMap<Room, Collection<Tripulante>> updatedRooms = state.getHabitacionesConTripulantes();
 
-        // tripulantes en habitaciones adyacentes
-        this.habitacionesConTripulantes = new HashMap<Room, Collection<Tripulante>>();
-        
-        if(!state.getAgentPosition().getTripulantesEnHabitacion().isEmpty()){
-            habitacionesConTripulantes.put(state.getAgentPosition(), state.getAgentPosition().getTripulantesEnHabitacion());
-        }
+        // Casteo a ArrayList por comodidad
+        ArrayList<Room> listaHabitacionesSiguientes = (ArrayList<Room>) habitacionesSiguientes;
 
-        for(Room room: habitacionesSiguientes){
-            if(!room.getTripulantesEnHabitacion().isEmpty()){
-                habitacionesConTripulantes.put(room, room.getTripulantesEnHabitacion());
+        // Itera sobre el mapa que ya tiene cargado y actualiza los rooms adyacentes con la info
+        for(Room room : updatedRooms.keySet()) {
+            int indexOf = listaHabitacionesSiguientes.indexOf(room);
+            if(indexOf!=-1) {
+                updatedRooms.put(room, listaHabitacionesSiguientes.get(indexOf).getTripulantesEnHabitacion());
             }
-
         }
+        
+        // Setea el actualizado
+        this.habitacionesConTripulantes = updatedRooms;
+
+        // for(Room room: habitacionesSiguientes){
+        //     if(!room.getTripulantesEnHabitacion().isEmpty()){
+        //         habitacionesConTripulantes.put(room, room.getTripulantesEnHabitacion());
+        //     }
+
+        // }
          /*Habilidad especial, guarda en esta variable todas las habitaciones con al menos 1 tripulante dentro, pero aun no está
             implementada*/
 
-            //habilidad especial
-            nroDePercepcion++;
-            if(nroDePercepcion==proximoPoder){
-             
+        //habilidad especial
+        nroDePercepcion++;
+        if(nroDePercepcion==proximoPoder){
             
-            for(Room habitacion :ship.keySet()){
-                if(!habitacion.getTripulantesEnHabitacion().isEmpty())
-                habitacionesConTripulantes.put(habitacion,habitacion.getTripulantesEnHabitacion());
-            }
+            this.habitacionesConTripulantes = state.getHabitacionesConTripulantes();
+
             Random nuevoPoder = new Random();
             proximoPoder = nuevoPoder.nextInt(3,6);
+            
+            // No deberia ser necesario hacer un loop porque el estado conoce todo
+            // y el agente tambien en el ciclo de percepcion
+            // for(Room habitacion : ship.keySet()){
+            //     if(!habitacion.getTripulantesEnHabitacion().isEmpty())
+            //     habitacionesConTripulantes.put(habitacion,habitacion.getTripulantesEnHabitacion());
+            // }
+            
         }
 
+        System.out.println(this.habitacionesConTripulantes);
 
     }
 

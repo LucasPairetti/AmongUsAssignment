@@ -63,7 +63,7 @@ public class Moverse_A_2 extends SearchAction{
     @Override
     public String toString() {
         // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'toString'");
+        return "moverse_a_2";
     }
     
 }

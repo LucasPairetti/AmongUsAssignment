@@ -17,15 +17,13 @@ public class matar_Tripulante extends SearchAction {
 
        if(!impostorState.getHabitacionesConTripulantes().containsKey(impostorState.getHabitacionActual()))
     return null; //hay que agregar que pasa
-    else{
-        Tripulante victima= impostorState.getHabitacionActual().getTripulantesEnHabitacion().get(0);
-        victima.setVivo(false);
-        impostorState.setTripulantes_Vivos(impostorState.getTripulantes_Vivos()-1);
-        impostorState.setEnergia(impostorState.getEnergia()-1);
-        impostorState.getHabitacionActual().getTripulantesEnHabitacion().remove(victima);
-
-        return impostorState;
-      
+    else{   System.out.println("I AM ABOUT TO MURDER! MUAHAHA");
+            Tripulante victima= impostorState.getHabitacionActual().getTripulantesEnHabitacion().get(0);
+            victima.setVivo(false);
+            impostorState.setTripulantes_Vivos(impostorState.getTripulantes_Vivos()-1);
+            impostorState.setEnergia(impostorState.getEnergia()-1);
+            impostorState.getHabitacionActual().getTripulantesEnHabitacion().remove(victima);
+            return impostorState; 
     }
 
     }
@@ -51,7 +49,7 @@ public class matar_Tripulante extends SearchAction {
     @Override
     public String toString() {
         // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'toString'");
+        return "matar tripulante";
     }
 
 }

@@ -57,7 +57,7 @@ public class Realizar_DestruirReactor extends SearchAction {
     @Override
     public String toString() {
         // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'toString'");
+        return "destruir reactor";
     }
 
 }

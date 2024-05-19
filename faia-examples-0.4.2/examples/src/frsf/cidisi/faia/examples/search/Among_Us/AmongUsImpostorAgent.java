@@ -60,7 +60,7 @@ public class AmongUsImpostorAgent extends SearchBasedAgent {
         //operators.addElement(new Realizar_Tarea(null));
         
 
-        // Create the Problem which the Pacman will resolve
+        // Create the Problem which the Impostor will resolve
         Problem problem = new Problem(goal, (AmongUsImpostorState) this.getAgentState(), operators);
         this.setProblem(problem);
 
@@ -89,6 +89,9 @@ public class AmongUsImpostorAgent extends SearchBasedAgent {
         // Ask the solver for the best action
         Action selectedAction = null;
         try {
+            System.out.println("Im the solver" + this.getSolver());
+            System.out.println("Im the problem" + this.getProblem());
+            // Printea ambos. O sea, el error debe estar en el problema
             selectedAction =
                     this.getSolver().solve(new Object[]{this.getProblem()});
         } catch (Exception ex) {

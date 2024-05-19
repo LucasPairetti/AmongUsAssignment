@@ -60,7 +60,7 @@ public class Realizar_Tarea extends SearchAction{
     @Override
     public String toString() {
         // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'toString'");
+        return "realizar tarea";
     }
  //idem con el movimiento, vamos a tener que hacer una accion de sabotaje por cada una porque no se pueden pasar argumentos
 }

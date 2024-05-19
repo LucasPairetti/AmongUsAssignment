@@ -63,8 +63,8 @@ public class Inicializador {
         
         String habitaciones_conectadas="";
         String TareasPorRealizar="";
-        str = str + " position=" + this.agentPosition.getNombre() +"\"\n";
-        str = str + " energy=" + this.agentEnergy + "\"\n";
+        str = str + " position=" + this.agentPosition.getNombre() +"\n";
+        str = str + " energy=" + this.agentEnergy + "\n";
        
         //por que esta en null?
         /* 
@@ -73,9 +73,9 @@ public class Inicializador {
         }
         */
         
-        str = str + "habitaciones conectadas: "+ "\"\n" + habitacionesConectadas.toString()+ "\"\n";
-        str = str + "tripulantes vivos= " + cantTripulantes + "\"\n";
-        str = str + "tareas pendientes= " + "\"\n";
+        str = str + "habitaciones conectadas: "+ "\n" + habitacionesConectadas.toString()+ "\n";
+        str = str + "tripulantes vivos= " + cantTripulantes + "\n";
+        str = str + "tareas pendientes= " + "\n";
         System.out.println(listaTareas);
         return str;
     }
@@ -139,7 +139,7 @@ public class Inicializador {
         Random r = new Random();
         this.agentPosition = keys.get(r.nextInt(1, 21));
         this.agentEnergy = r.nextInt(30, 151);
-        this.cantTripulantes = 7;
+        this.cantTripulantes = 1;
 
         Tripulante tripulante;
         ArrayList<Room> nodos = new ArrayList<Room>(ship.keySet());

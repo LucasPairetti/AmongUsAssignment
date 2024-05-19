@@ -55,6 +55,6 @@ public class Realizar_DestruirSalaDeArmas extends SearchAction {
     @Override
     public String toString() {
         // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'toString'");
+        return "destruir sala de armas";
     }
 }

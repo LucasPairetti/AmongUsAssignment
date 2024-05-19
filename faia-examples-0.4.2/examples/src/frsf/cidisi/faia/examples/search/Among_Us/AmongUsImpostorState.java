@@ -171,7 +171,6 @@ public class AmongUsImpostorState extends SearchBasedAgentState {
         this.energia=amongUsPerception.getEnergia();
         this.habitacionActual=amongUsPerception.getHabitacionActual();
         this.habitacionesConectadas=amongUsPerception.getHabitacionesSiguientes();
-        //tarea? 
         this.nroDePercepcion = amongUsPerception.getNroDePercepcion();
         this.proximoPoder = amongUsPerception.getProximoPoder();
         this.tareaEnHabitacion=amongUsPerception.getTareaEnHabitacion();
