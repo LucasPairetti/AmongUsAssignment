@@ -112,7 +112,7 @@ public class Search extends Solve {
                     // This is the action that can generate a new node.- 
                     SearchAction action = actionList.elementAt(i);
                     // Ejecuta muchas veces este sysou señal que piensa.
-                    System.out.println(action.toString());
+                    // System.out.println(action.toString());
                     ast = action.execute(ast);
                     
                     // TODO: HAY QUE VER SI CONVIENE QUE CUANDO EL OPERADOR NO PUEDA SER 

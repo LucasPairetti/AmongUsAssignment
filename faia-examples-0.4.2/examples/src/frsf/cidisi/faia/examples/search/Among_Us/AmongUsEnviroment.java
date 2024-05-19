@@ -23,12 +23,14 @@ public class AmongUsEnviroment extends Environment {
 
     @Override
     public Perception getPercept() {
+
         // Create a new perception to return based on the environment.
         AmongUsPerception newPerception = new AmongUsPerception();
 
         // Get agent position
         AmongUsEnviromentState state = this.getEnvironmentState();
-
+        
+        state.setNroDePercepcion(state.getNroDePercepcion()+1);
         newPerception.setNroDePercepcion(state.getNroDePercepcion());
         newPerception.setProximoPoder(state.getProximoPoder());
  
@@ -48,30 +50,18 @@ public class AmongUsEnviroment extends Environment {
         } else
         newPerception.setTareaEnHabitacion(true);
 
-        // Mapa general para updatear
-        HashMap<Room, Collection<Tripulante>> updatedRooms = state.getHabitacionesConTripulantes();
-
-        System.out.println(updatedRooms);
-
-        // Casteo a ArrayList por comodidad
-        ArrayList<Room> listaHabitacionesSiguientes = (ArrayList<Room>) newPerception.getHabitacionesSiguientes();
-
-        // Itera sobre el mapa que ya tiene cargado y actualiza los rooms adyacentes con la info
-        for(Room room : updatedRooms.keySet()) {
-            int indexOf = listaHabitacionesSiguientes.indexOf(room);
-            if(indexOf!=-1) {
-                updatedRooms.put(room, listaHabitacionesSiguientes.get(indexOf).getTripulantesEnHabitacion());
+        if(newPerception.getNroDePercepcion()>1){// Mapa general para updatear
+            HashMap<Room,Collection<Tripulante>> habitacionesConTripulantes = new HashMap<Room,Collection<Tripulante>>();
+            for(Room room : newPerception.getHabitacionesSiguientes()) {
+                habitacionesConTripulantes.put(room, room.getTripulantesEnHabitacion());
             }
-        }
-        
-        // Setea el actualizado
-        newPerception.setHabitacionesConTripulantes(updatedRooms);
+        } else {newPerception.setHabitacionesConTripulantes(state.getHabitacionesConTripulantes());
+            System.out.println("IM THE FIRST PERCEPTION!");};
 
-         /*Habilidad especial, guarda en esta variable todas las habitaciones con al menos 1 tripulante dentro, pero aun no está
-            implementada*/
+        /*Habilidad especial, guarda en esta variable todas las habitaciones con al menos 1 tripulante dentro, pero aun no está
+                implementada*/
 
         //habilidad especial
-        newPerception.setNroDePercepcion(newPerception.getNroDePercepcion()+1);
         if(newPerception.getNroDePercepcion()==newPerception.getProximoPoder()){
             
             newPerception.setHabitacionesConTripulantes(state.getHabitacionesConTripulantes());
@@ -86,6 +76,7 @@ public class AmongUsEnviroment extends Environment {
         
         // Return perception to Simulator
         return newPerception;
+        
     }
 
     @Override
@@ -110,8 +101,26 @@ public class AmongUsEnviroment extends Environment {
     public ArrayList<Room> getSuccesors(Room nodo) {
         return this.getEnvironmentState().getSuccesors(nodo);
     }
-
-
     
 
 }
+
+
+// HashMap<Room, Collection<Tripulante>> oldRooms = newPerception.getHabitacionesConTripulantes();
+
+//             System.out.println("Where are the inmates: " + stateRooms);
+
+//             // Casteo a ArrayList por comodidad
+//             ArrayList<Room> listaHabitacionesSiguientes = (ArrayList<Room>) newPerception.getHabitacionesSiguientes();
+            
+//             // Update rooms in listaHabitacionesSiguientes based on stateRooms
+//             for (Room room : listaHabitacionesSiguientes) {
+//                 Room matchingRoom = findRoomById(stateRooms.keySet(), room.getId());
+//                 if (matchingRoom != null) {
+//                     ArrayList<Tripulante> tripulantes = (ArrayList<Tripulante>) stateRooms.get(matchingRoom);
+//                     // Assuming Room class has a method to update its tripulantes
+//                     room.setTripulantesEnHabitacion(tripulantes);
+//                 }
+//             }
+
+//             newPerception

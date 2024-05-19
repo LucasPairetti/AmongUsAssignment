@@ -13,6 +13,7 @@ import frsf.cidisi.faia.agent.search.SearchAction;
 import frsf.cidisi.faia.agent.search.SearchBasedAgent;
 import frsf.cidisi.faia.examples.search.Among_Us.AmongUsImpostorAgent;
 import frsf.cidisi.faia.examples.search.Among_Us.actions.*;
+import frsf.cidisi.faia.solver.search.BreathFirstSearch;
 import frsf.cidisi.faia.solver.search.DepthFirstSearch;
 import frsf.cidisi.faia.solver.search.Search;
 
@@ -74,7 +75,7 @@ public class AmongUsImpostorAgent extends SearchBasedAgent {
     public Action selectAction() {
 
         // Create the search strategy
-        DepthFirstSearch strategy = new DepthFirstSearch();
+        BreathFirstSearch strategy = new BreathFirstSearch();
 
         // Create a Search object with the strategy
         Search searchSolver = new Search(strategy);

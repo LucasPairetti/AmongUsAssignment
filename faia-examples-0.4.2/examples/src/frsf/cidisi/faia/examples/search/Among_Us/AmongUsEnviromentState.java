@@ -34,18 +34,6 @@ public AmongUsEnviromentState(){
     @Override
     public void initState() {
 
-        /* private HashMap<Room, Collection<Room>> ship;
-    private Room agentPosition;
-    private int agentEnergy;
-    private Collection<Room> habitacionesConectadas = new ArrayList<Room>();
-    private int tripulantes_Vivos;
-    private List<Tarea> tareas_Pendientes;
-    private HashMap<Room, Collection<Tripulante>> habitacionesConTripulantes;
-    private Boolean tareaEnHabitacion;
-    //habilidad especial
-    private int nroDePercepcion;
-    private int proximoPoder; */
-
         // Get Inicializador
         Inicializador init = Inicializador.getInstance();
 

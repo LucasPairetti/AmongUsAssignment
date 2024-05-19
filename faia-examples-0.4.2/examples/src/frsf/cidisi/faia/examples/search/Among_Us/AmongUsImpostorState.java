@@ -167,7 +167,6 @@ public class AmongUsImpostorState extends SearchBasedAgentState {
 
        AmongUsPerception amongUsPerception = (AmongUsPerception) p;
 
-        this.habitacionesConTripulantes=amongUsPerception.getHabitacionesConTripulantes();
         this.energia=amongUsPerception.getEnergia();
         this.habitacionActual=amongUsPerception.getHabitacionActual();
         this.habitacionesConectadas=amongUsPerception.getHabitacionesSiguientes();
@@ -175,6 +174,13 @@ public class AmongUsImpostorState extends SearchBasedAgentState {
         this.proximoPoder = amongUsPerception.getProximoPoder();
         this.tareaEnHabitacion=amongUsPerception.getTareaEnHabitacion();
 
+        HashMap<Room, Collection<Tripulante>> positions = new HashMap<Room, Collection<Tripulante>>();
+
+        for(Room room : amongUsPerception.getHabitacionesConTripulantes().keySet()) {
+            positions.put(room, room.getTripulantesEnHabitacion());
+        }
+
+        this.habitacionesConTripulantes = positions;
 
     }
 
@@ -217,22 +223,6 @@ public class AmongUsImpostorState extends SearchBasedAgentState {
         
        
         String str = "";
-
-        /*
-         *   private HashMap<Room, Collection<Room>> ship;
-    private Room habitacionActual;
-    private int energia;
-    private Collection<Room> habitacionesConectadas = new ArrayList<Room>();
-    private int energia_Inicial;
-    private int tripulantes_Vivos;
-    private List<Tarea> tareas_Pendientes;
-    private HashMap<Room, Collection<Tripulante>> habitacionesConTripulantes;
-    private Boolean tareaEnHabitacion;
-    //habilidad especial
-    private int nroDePercepcion;
-    private int proximoPoder;
-
-         */
         
         String habitaciones_conectadas= this.getHabitacionesConectadas().toString();
         String TareasPorRealizar=this.getTareas_Pendientes().toString();
@@ -240,23 +230,20 @@ public class AmongUsImpostorState extends SearchBasedAgentState {
         str = str + " energy=" + this.energia + "\"\n";
         str = str + " habitaciones conectadas=" + habitaciones_conectadas + "\n";
         str = str + " tareasPorRealizar=" + TareasPorRealizar + "\n";
-        // for(Room habitacionConectada: habitacionesConectadas){
-        //     habitaciones_conectadas.concat(" "+ habitacionConectada.getNombre()+ "\"\n");
-        // }
-       
-        // for(Tarea tareasRealizables: tareas_Pendientes){
-        //     TareasPorRealizar.concat(" "+  tareasRealizables.name()+ "\"\n");
-        // }
-        
-        
-        // str = str + "habitaciones conectadas: "+ "\"\n" + habitaciones_conectadas+ "\"\n";
-        // str = str + "tripulantes vivos= " + tripulantes_Vivos + "\"\n";
-        // str = str + "tareas pendientes= " + TareasPorRealizar + "\"\n";
         
         return str;
         
     }
     //directameente no se inicializó, tiene todo en null al aprecer
 
+    // Helper method to find a room by ID in a collection of rooms
+    private static Room findRoomById(Collection<Room> rooms, int id) {
+        for (Room room : rooms) {
+            if (room.getId() == id) {
+                return room;
+            }
+        }
+    return null;
+    }
     
 }

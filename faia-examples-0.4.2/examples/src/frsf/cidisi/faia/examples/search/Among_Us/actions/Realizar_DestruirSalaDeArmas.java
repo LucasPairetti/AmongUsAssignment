@@ -13,7 +13,10 @@ public class Realizar_DestruirSalaDeArmas extends SearchAction {
 
     @Override
     public SearchBasedAgentState execute(SearchBasedAgentState s) {
+
+
         AmongUsImpostorState impostorState = (AmongUsImpostorState) s;
+        
         if(impostorState.getTareaEnHabitacion()==false){
             return null;
         }

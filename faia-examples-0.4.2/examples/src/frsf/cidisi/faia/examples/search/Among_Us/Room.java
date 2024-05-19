@@ -1,5 +1,6 @@
 package frsf.cidisi.faia.examples.search.Among_Us;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 public class Room {
 
@@ -66,9 +67,5 @@ public class Room {
     public void setTarea(Tarea tarea) {
         this.tarea = tarea;
     }
-    
-
-
-    
 
 }

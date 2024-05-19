@@ -14,6 +14,9 @@ public class Realizar_DesconectarServicioElectrico extends SearchAction {
     @Override
     public SearchBasedAgentState execute(SearchBasedAgentState s) {
         AmongUsImpostorState impostorState = (AmongUsImpostorState) s;
+
+        // System.out.println(impostorState.getTareas_Pendientes());
+
         if (impostorState.getHabitacionActual().getTarea()==null)
         return null;
         else if (!impostorState.getHabitacionActual().getTarea().equals(tarea))

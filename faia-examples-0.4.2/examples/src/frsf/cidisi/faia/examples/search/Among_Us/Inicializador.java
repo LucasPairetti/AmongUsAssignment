@@ -137,25 +137,25 @@ public class Inicializador {
         // Params
         ArrayList<Room> keys = new ArrayList<Room>(ship.keySet());
         Random r = new Random();
-        this.agentPosition = keys.get(r.nextInt(1, 21));
+        this.agentPosition = this.nodo1;
         this.agentEnergy = r.nextInt(30, 151);
         this.cantTripulantes = 1;
 
-        Tripulante tripulante;
+        Tripulante tripulante = new Tripulante(0);
         ArrayList<Room> nodos = new ArrayList<Room>(ship.keySet());
     
-        // Put tripulantes que estaba en enviroment state
-        for(int i = 0; i < this.cantTripulantes; i++) {
-            tripulante = new Tripulante(i);
-            nodos.get(r.nextInt(nodos.size())).addTripulante(tripulante);
-        }
+        // // Put tripulantes que estaba en enviroment state
+        // for(int i = 0; i < this.cantTripulantes; i++) {
+        //     tripulante = new Tripulante(i);
+        //     nodos.get(r.nextInt(nodos.size())).addTripulante(tripulante);
+        // }
+        
+        nodos.get(0).addTripulante(tripulante);
 
         //habitaciones conectadas
-        
         this.habitacionesConectadas= ship.get(this.agentPosition);
         
-        //primeros tripulantes en habitacionews
-        
+        // Primeros tripulantes en habitacionews
         habitacionesConTripulantes = new HashMap<Room, Collection<Tripulante>> ();
         if(!agentPosition.getTripulantesEnHabitacion().isEmpty()){
             habitacionesConTripulantes.put(agentPosition, agentPosition.getTripulantesEnHabitacion());
@@ -163,7 +163,7 @@ public class Inicializador {
 
         for(Room room: habitacionesConectadas){
             if(!room.getTripulantesEnHabitacion().isEmpty()){
-                habitacionesConTripulantes.put(room, room.getTripulantesEnHabitacion());
+                this.habitacionesConTripulantes.put(room, room.getTripulantesEnHabitacion());
             }
 
         }
@@ -185,7 +185,7 @@ public class Inicializador {
           this.nroDePercepcion=0;
           this.proximoPoder= nro.nextInt(3, 6);
 
-          stateTest = new AmongUsImpostorState(this.ship, agentEnergy, agentPosition, habitacionesConectadas, agentEnergy, agentEnergy, habitacionesConTripulantes, listaTareas, agentEnergy, agentEnergy, tareaEnHabitacion);
+        //   stateTest = new AmongUsImpostorState(this.ship, agentEnergy, agentPosition, habitacionesConectadas, agentEnergy, agentEnergy, habitacionesConTripulantes, listaTareas, agentEnergy, agentEnergy, tareaEnHabitacion);
     }
 
     public int getAgentEnergy() {
