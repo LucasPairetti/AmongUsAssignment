@@ -14,19 +14,20 @@ public class Realizar_DestruirSalaDeArmas extends SearchAction {
     @Override
     public SearchBasedAgentState execute(SearchBasedAgentState s) {
 
-
         AmongUsImpostorState impostorState = (AmongUsImpostorState) s;
-        
-        if(impostorState.getTareaEnHabitacion()==false){
+        if(impostorState.getHabitacionActual().getTarea()==null){
             return null;
         }
         if (!impostorState.getHabitacionActual().getTarea().equals(tarea))
             return null;
+            else if(!impostorState.getTareas_Pendientes().contains(tarea))
+            return null;
         else {
-
-            impostorState.getTareas_Pendientes().remove(tarea);
+            
+            impostorState.getTareas_Pendientes().remove(Tarea.DESTRUIR_SALA_ARMAS);
             impostorState.setEnergia(impostorState.getEnergia() - 1);
-
+            System.out.println("termine de tarea Destruir sala de armas");
+            System.out.println(impostorState.getTareas_Pendientes());
             return impostorState;
         }
 
@@ -40,10 +41,12 @@ public class Realizar_DestruirSalaDeArmas extends SearchAction {
         return null;
         if (!impostorState.getHabitacionActual().getTarea().equals(tarea))
             return null;
+            else if(!impostorState.getTareas_Pendientes().contains(tarea))
+        return null;
         else {
-
+            
             environmentState.setAgentEnergy(impostorState.getEnergia() - 1);
-            environmentState.getTareas_Pendientes().remove(tarea);
+            environmentState.getTareas_Pendientes().remove(Tarea.DESTRUIR_SALA_ARMAS);
             return environmentState;
         }
 

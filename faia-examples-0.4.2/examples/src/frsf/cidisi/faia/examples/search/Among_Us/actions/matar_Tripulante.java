@@ -30,6 +30,8 @@ public class matar_Tripulante extends SearchAction {
             impostorState.setEnergia(impostorState.getEnergia()-1);
             impostorState.getHabitacionesConTripulantes().remove(impostorState.getHabitacionActual());
             impostorState.getHabitacionActual().getTripulantesEnHabitacion().remove(victima);
+
+            
             return impostorState; 
         }
 
@@ -50,7 +52,7 @@ public class matar_Tripulante extends SearchAction {
         victima.setVivo(false);
         enviromentState.getHabitacionesConTripulantes().remove(enviromentState.getAgentPosition());
         enviromentState.getAgentPosition().getTripulantesEnHabitacion().remove(victima);
-       
+        
        return enviromentState;
     }
 

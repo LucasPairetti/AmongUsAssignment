@@ -20,11 +20,14 @@ public class Realizar_DestruirReactor extends SearchAction {
         }
         if (!impostorState.getHabitacionActual().getTarea().equals(tarea))
             return null;
+            else if(!impostorState.getTareas_Pendientes().contains(tarea))
+            return null;
         else {
-
-            impostorState.getTareas_Pendientes().remove(tarea);
-            impostorState.setEnergia(impostorState.getEnergia() - 1);
             
+            impostorState.getTareas_Pendientes().remove(Tarea.DESTRUIR_REACTOR);
+            impostorState.setEnergia(impostorState.getEnergia() - 1);
+            System.out.println("termine de tarea Destruir reactor");
+            System.out.println(impostorState.getTareas_Pendientes());
             return impostorState;
         }
 
@@ -38,10 +41,12 @@ public class Realizar_DestruirReactor extends SearchAction {
         return null;
         if (!impostorState.getHabitacionActual().getTarea().equals(tarea))
             return null;
+            else if(!impostorState.getTareas_Pendientes().contains(tarea))
+        return null;
         else {
-
+            
             environmentState.setAgentEnergy(impostorState.getEnergia() - 1);
-            environmentState.getTareas_Pendientes().remove(tarea);
+            environmentState.getTareas_Pendientes().remove(Tarea.DESTRUIR_REACTOR);
             return environmentState;
         }
 

@@ -93,8 +93,10 @@ public class AmongUsImpostorAgent extends SearchBasedAgent {
             System.out.println("Im the solver" + this.getSolver());
             System.out.println("Im the problem" + this.getProblem());
             // Printea ambos. O sea, el error debe estar en el problema
+            
             selectedAction =
                     this.getSolver().solve(new Object[]{this.getProblem()});
+                    
         } catch (Exception ex) {
             Logger.getLogger(AmongUsImpostorAgent.class.getName()).log(Level.SEVERE, null, ex);
         }

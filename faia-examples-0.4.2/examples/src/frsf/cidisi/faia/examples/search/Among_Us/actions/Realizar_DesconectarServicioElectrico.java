@@ -21,11 +21,14 @@ public class Realizar_DesconectarServicioElectrico extends SearchAction {
         return null;
         else if (!impostorState.getHabitacionActual().getTarea().equals(tarea))
             return null;
+        else if(!impostorState.getTareas_Pendientes().contains(tarea))
+        return null;
         else {
 
-            impostorState.getTareas_Pendientes().remove(tarea);
+            impostorState.getTareas_Pendientes().remove(Tarea.DESCONECTAR_SERVICIO_ELECTRICO);
             impostorState.setEnergia(impostorState.getEnergia() - 1);
-
+            System.out.println("termine de tarea Servicio electrico");
+            System.out.println(impostorState.getTareas_Pendientes());
             return impostorState;
         }
 
@@ -39,10 +42,12 @@ public class Realizar_DesconectarServicioElectrico extends SearchAction {
         return null;
         if (!impostorState.getHabitacionActual().getTarea().equals(tarea))
             return null;
+            else if(!impostorState.getTareas_Pendientes().contains(tarea))
+        return null;
         else {
 
             environmentState.setAgentEnergy(impostorState.getEnergia() - 1);
-            environmentState.getTareas_Pendientes().remove(tarea);
+            environmentState.getTareas_Pendientes().remove(Tarea.DESCONECTAR_SERVICIO_ELECTRICO);
             return environmentState;
         }
 

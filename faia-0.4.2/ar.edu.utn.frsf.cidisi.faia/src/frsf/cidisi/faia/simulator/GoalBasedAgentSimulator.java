@@ -79,8 +79,9 @@ public abstract class GoalBasedAgentSimulator extends Simulator {
             System.out.println("Environment: " + environment);
 
             System.out.println("Asking the agent for an action...");
+            
             action = agent.selectAction();
-
+            
             if (action == null) {
                 break;
             }
@@ -89,7 +90,7 @@ public abstract class GoalBasedAgentSimulator extends Simulator {
             System.out.println();
 
             this.actionReturned(agent, action);
-
+            
         } while (!this.agentSucceeded(action) && !this.agentFailed(action));
 
         // Check what happened, if agent has reached the goal or not.
