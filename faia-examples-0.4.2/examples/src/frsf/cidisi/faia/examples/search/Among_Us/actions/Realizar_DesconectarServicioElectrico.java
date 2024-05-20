@@ -27,8 +27,6 @@ public class Realizar_DesconectarServicioElectrico extends SearchAction {
 
             impostorState.getTareas_Pendientes().remove(Tarea.DESCONECTAR_SERVICIO_ELECTRICO);
             impostorState.setEnergia(impostorState.getEnergia() - 1);
-            System.out.println("termine de tarea Servicio electrico");
-            System.out.println(impostorState.getTareas_Pendientes());
             return impostorState;
         }
 

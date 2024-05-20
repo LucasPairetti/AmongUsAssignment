@@ -54,7 +54,6 @@ public AmongUsEnviromentState(){
     }
 
     public Object clone(){
-        // System.out.println("IM GETTING CLONED");
         return ship.clone();
     }
 
@@ -74,6 +73,8 @@ public AmongUsEnviromentState(){
             str = str + " ]\n";
         }
         str = str + " ]";
+
+        str = str + "\nHABITACIONES C TRIPULANTES: " + this.getHabitacionesConTripulantes();
 
         return str;
     }

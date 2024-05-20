@@ -26,6 +26,7 @@ import frsf.cidisi.faia.agent.Perception;
 import frsf.cidisi.faia.environment.Environment;
 import frsf.cidisi.faia.simulator.events.EventType;
 import frsf.cidisi.faia.simulator.events.SimulatorEventNotifier;
+import frsf.cidisi.faia.state.EnvironmentState;
 
 public abstract class GoalBasedAgentSimulator extends Simulator {
 
@@ -74,13 +75,20 @@ public abstract class GoalBasedAgentSimulator extends Simulator {
             agent.see(perception);
             System.out.println("Perception: " + perception);
             
-            // System.out.println("Agent State: " + agent.getAgentState());
-            // System.out.println("Environment: " + environment);
+            System.out.println("Before");
+            System.out.println("Env State: " + environment.getEnvironmentState());
+
+            EnvironmentState es = environment.getEnvironmentState();
 
             System.out.println("Asking the agent for an action...");
             
             action = agent.selectAction();
             
+            environment.setEnvironmentState(es);
+
+            System.out.println("After");
+            System.out.println("Env State: " + environment.getEnvironmentState());
+
             if (action == null) {
                 break;
             }

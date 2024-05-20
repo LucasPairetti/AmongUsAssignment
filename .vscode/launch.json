@@ -1,0 +1,70 @@
+{
+    // Use IntelliSense para saber los atributos posibles.
+    // Mantenga el puntero para ver las descripciones de los existentes atributos.
+    // Para más información, visite: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "SimpleWaterTankMain",
+            "request": "launch",
+            "mainClass": "frsf.cidisi.faia.examples.matlab.simple_water_tank.SimpleWaterTankMain",
+            "projectName": "examples"
+        },
+        {
+            "type": "java",
+            "name": "CubesMain",
+            "request": "launch",
+            "mainClass": "frsf.cidisi.faia.examples.planning.cubes.CubesMain",
+            "projectName": "examples"
+        },
+        {
+            "type": "java",
+            "name": "AmongUsMain",
+            "request": "launch",
+            "mainClass": "frsf.cidisi.faia.examples.search.Among_Us.AmongUsMain",
+            "projectName": "examples"
+        },
+        {
+            "type": "java",
+            "name": "PacmanSearchMain",
+            "request": "launch",
+            "mainClass": "frsf.cidisi.faia.examples.search.pacman.PacmanSearchMain",
+            "projectName": "examples"
+        },
+        {
+            "type": "java",
+            "name": "RobotMain",
+            "request": "launch",
+            "mainClass": "frsf.cidisi.faia.examples.search.robot.RobotMain",
+            "projectName": "examples"
+        },
+        {
+            "type": "java",
+            "name": "SnakeMain",
+            "request": "launch",
+            "mainClass": "frsf.cidisi.faia.examples.search.snake.SnakeMain",
+            "projectName": "examples"
+        },
+        {
+            "type": "java",
+            "name": "PacmanLogicMain",
+            "request": "launch",
+            "mainClass": "frsf.cidisi.faia.examples.situationcalculus.pacman.PacmanLogicMain",
+            "projectName": "examples"
+        },
+        {
+            "type": "java",
+            "name": "WumpusMain",
+            "request": "launch",
+            "mainClass": "frsf.cidisi.faia.examples.situationcalculus.wumpus.WumpusMain",
+            "projectName": "examples"
+        }
+    ]
+}

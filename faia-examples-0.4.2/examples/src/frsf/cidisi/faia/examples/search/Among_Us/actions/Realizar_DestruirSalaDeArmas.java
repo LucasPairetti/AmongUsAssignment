@@ -26,8 +26,6 @@ public class Realizar_DestruirSalaDeArmas extends SearchAction {
             
             impostorState.getTareas_Pendientes().remove(Tarea.DESTRUIR_SALA_ARMAS);
             impostorState.setEnergia(impostorState.getEnergia() - 1);
-            System.out.println("termine de tarea Destruir sala de armas");
-            System.out.println(impostorState.getTareas_Pendientes());
             return impostorState;
         }
 

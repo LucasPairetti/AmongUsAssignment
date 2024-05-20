@@ -26,8 +26,6 @@ public class Realizar_DestruirReactor extends SearchAction {
             
             impostorState.getTareas_Pendientes().remove(Tarea.DESTRUIR_REACTOR);
             impostorState.setEnergia(impostorState.getEnergia() - 1);
-            System.out.println("termine de tarea Destruir reactor");
-            System.out.println(impostorState.getTareas_Pendientes());
             return impostorState;
         }
 

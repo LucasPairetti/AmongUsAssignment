@@ -51,6 +51,7 @@ public class AmongUsEnviroment extends Environment {
 
         // Habitaciones conectadas
         if(newPerception.getNroDePercepcion()>1){// Mapa general para updatear
+            
             HashMap<Room,Collection<Tripulante>> habitacionesConTripulantes = new HashMap<Room,Collection<Tripulante>>();
 
             for(Room room : state.getHabitacionesConectadas()) {
@@ -111,23 +112,3 @@ public class AmongUsEnviroment extends Environment {
     
 
 }
-
-
-// HashMap<Room, Collection<Tripulante>> oldRooms = newPerception.getHabitacionesConTripulantes();
-
-//             System.out.println("Where are the inmates: " + stateRooms);
-
-//             // Casteo a ArrayList por comodidad
-//             ArrayList<Room> listaHabitacionesSiguientes = (ArrayList<Room>) newPerception.getHabitacionesSiguientes();
-            
-//             // Update rooms in listaHabitacionesSiguientes based on stateRooms
-//             for (Room room : listaHabitacionesSiguientes) {
-//                 Room matchingRoom = findRoomById(stateRooms.keySet(), room.getId());
-//                 if (matchingRoom != null) {
-//                     ArrayList<Tripulante> tripulantes = (ArrayList<Tripulante>) stateRooms.get(matchingRoom);
-//                     // Assuming Room class has a method to update its tripulantes
-//                     room.setTripulantesEnHabitacion(tripulantes);
-//                 }
-//             }
-
-//             newPerception
