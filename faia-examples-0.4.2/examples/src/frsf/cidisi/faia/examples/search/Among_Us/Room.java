@@ -2,7 +2,7 @@ package frsf.cidisi.faia.examples.search.Among_Us;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-public class Room {
+public class Room implements Cloneable  {
 
     public int id;
     public String nombre;
@@ -66,6 +66,19 @@ public class Room {
 
     public void setTarea(Tarea tarea) {
         this.tarea = tarea;
+    }
+
+    public Room clone() {
+        try {
+            Room clone = (Room) super.clone();
+            clone.tripulantesEnHabitacion = new ArrayList<>();
+            for (Tripulante tripulante : this.tripulantesEnHabitacion) {
+                clone.tripulantesEnHabitacion.add(tripulante.clone());
+            }
+            return clone;
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError(); // No debería ocurrir porque implementamos Cloneable
+        }
     }
 
 }

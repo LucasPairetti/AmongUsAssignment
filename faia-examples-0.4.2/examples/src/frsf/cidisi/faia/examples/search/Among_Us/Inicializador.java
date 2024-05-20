@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
-public class Inicializador {
+public class Inicializador implements Cloneable {
 
     private static Inicializador instance;
 
@@ -230,6 +230,57 @@ public class Inicializador {
     }
 
     
-
+    @Override
+    public Inicializador clone() {
+        try {
+            Inicializador clone = (Inicializador) super.clone();
+    
+            // Clonar la posición del agente
+            clone.agentPosition = this.agentPosition.clone();
+    
+            // Clonar habitaciones conectadas
+            clone.habitacionesConectadas = new ArrayList<>();
+            for (Room room : this.habitacionesConectadas) {
+                clone.habitacionesConectadas.add(room.clone());
+            }
+    
+            // Clonar el ship
+            clone.ship = new HashMap<>();
+            for (HashMap.Entry<Room, Collection<Room>> entry : this.ship.entrySet()) {
+                Room key = entry.getKey().clone();
+                Collection<Room> value = new ArrayList<>();
+                for (Room room : entry.getValue()) {
+                    value.add(room.clone());
+                }
+                clone.ship.put(key, value);
+            }
+    
+            // Clonar lista de tareas
+            clone.listaTareas = new ArrayList<>(this.listaTareas); // Asumimos que Tarea es un enum o inmutable
+    
+            // Clonar habitaciones con tripulantes
+            clone.habitacionesConTripulantes = new HashMap<>();
+            for (HashMap.Entry<Room, Collection<Tripulante>> entry : this.habitacionesConTripulantes.entrySet()) {
+                Room key = entry.getKey().clone();
+                Collection<Tripulante> value = new ArrayList<>();
+                for (Tripulante tripulante : entry.getValue()) {
+                    value.add(tripulante.clone());
+                }
+                clone.habitacionesConTripulantes.put(key, value);
+            }
+    
+            // Los demás atributos son tipos primitivos o inmutables, por lo que se copian directamente
+            clone.agentEnergy = this.agentEnergy;
+            clone.cantTripulantes = this.cantTripulantes;
+            clone.tareaEnHabitacion = this.tareaEnHabitacion;
+            clone.nroDePercepcion = this.nroDePercepcion;
+            clone.proximoPoder = this.proximoPoder;
+            clone.stateTest = this.stateTest; // Asumimos que stateTest es inmutable o puede ser compartido
+    
+            return clone;
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError(); // No debería ocurrir porque implementamos Cloneable
+        }
+    }
     
 }

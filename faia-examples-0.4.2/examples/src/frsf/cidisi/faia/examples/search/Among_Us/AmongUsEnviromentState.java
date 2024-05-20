@@ -35,7 +35,8 @@ public AmongUsEnviromentState(){
     public void initState() {
 
         // Get Inicializador
-        Inicializador init = Inicializador.getInstance();
+        Inicializador inicializadorOriginal = Inicializador.getInstance();
+        Inicializador init = inicializadorOriginal.clone();
 
         // Get ship
         this.ship = init.getShip();

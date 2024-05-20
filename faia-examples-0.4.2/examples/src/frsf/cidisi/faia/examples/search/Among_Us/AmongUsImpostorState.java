@@ -26,7 +26,8 @@ public class AmongUsImpostorState extends SearchBasedAgentState {
     public void initState() {
         // TODO Auto-generated method stub
        
-        Inicializador init= Inicializador.getInstance();
+        Inicializador inicializadorOriginal = Inicializador.getInstance();
+        Inicializador init = inicializadorOriginal.clone();
 
         this.nroDePercepcion= init.getNroDePercepcion();
         this.proximoPoder=init.getProximoPoder();

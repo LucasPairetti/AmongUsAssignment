@@ -1,6 +1,6 @@
 package frsf.cidisi.faia.examples.search.Among_Us;
 
-public class Tripulante {
+public class Tripulante implements Cloneable {
 
     public int id;
     public boolean vivo;
@@ -24,6 +24,14 @@ public class Tripulante {
 
     public void setVivo(boolean vivo) {
         this.vivo = vivo;
+    }
+    @Override
+    public Tripulante clone() {
+        try {
+            return (Tripulante) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError(); // No debería ocurrir porque implementamos Cloneable
+        }
     }
 
 }

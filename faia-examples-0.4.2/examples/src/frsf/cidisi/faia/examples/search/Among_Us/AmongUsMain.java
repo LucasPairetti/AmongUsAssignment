@@ -8,6 +8,8 @@ public class AmongUsMain {
         AmongUsImpostorAgent impostor = new AmongUsImpostorAgent();
 
         AmongUsEnviroment amongUsEnvironment = new AmongUsEnviroment();
+
+        
     
         SearchBasedAgentSimulator simulator =
                 new SearchBasedAgentSimulator(amongUsEnvironment, impostor);

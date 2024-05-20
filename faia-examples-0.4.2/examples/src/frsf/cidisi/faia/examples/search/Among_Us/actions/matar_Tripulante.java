@@ -11,11 +11,14 @@ import frsf.cidisi.faia.state.EnvironmentState;
 
 public class matar_Tripulante extends SearchAction {
     
+    int i=0;
     
     @Override
     public SearchBasedAgentState execute(SearchBasedAgentState s) {
         AmongUsImpostorState impostorState = (AmongUsImpostorState) s;
-      
+      i++;
+      System.out.println("execute kill agente lista: "+ i  +" "+impostorState.getHabitacionesConTripulantes());
+      System.out.println("execute kill agente tripvivos: "+ i +" "+impostorState.getTripulantes_Vivos());
        
         if(!impostorState.getHabitacionesConTripulantes().containsKey(impostorState.getHabitacionActual()))
          return null;
@@ -48,7 +51,8 @@ public class matar_Tripulante extends SearchAction {
        AmongUsImpostorState impostorState = (AmongUsImpostorState) ast;
        
         System.out.println("IM EXECUTED");
-        
+        System.out.println("execute kill env lista: "+ i  +" "+enviromentState.getHabitacionesConTripulantes());
+        System.out.println("execute kill env tripvivos: "+ i +" "+enviromentState.getTripulantes_Vivos());
         System.out.println(enviromentState.getAgentPosition().getNombre());
         if(!enviromentState.getHabitacionesConTripulantes().containsKey(enviromentState.getAgentPosition())){
             return null;
