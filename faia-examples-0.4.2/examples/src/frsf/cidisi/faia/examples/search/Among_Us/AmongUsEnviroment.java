@@ -21,6 +21,7 @@ public class AmongUsEnviroment extends Environment {
         return (AmongUsEnviromentState) super.getEnvironmentState();
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public Perception getPercept() {
 
@@ -65,7 +66,7 @@ public class AmongUsEnviroment extends Environment {
 
             newPerception.setHabitacionesConTripulantes(habitacionesConTripulantes);
 
-        } else {newPerception.setHabitacionesConTripulantes(state.getHabitacionesConTripulantes());};
+        } else {newPerception.setHabitacionesConTripulantes((HashMap<Room,Collection<Tripulante>>) state.getHabitacionesConTripulantes().clone());};
 
         /*Habilidad especial, guarda en esta variable todas las habitaciones con al menos 1 tripulante dentro, pero aun no está
                 implementada*/
@@ -73,7 +74,7 @@ public class AmongUsEnviroment extends Environment {
         //habilidad especial
         if(newPerception.getNroDePercepcion()==newPerception.getProximoPoder()){
             
-            newPerception.setHabitacionesConTripulantes(state.getHabitacionesConTripulantes());
+            newPerception.setHabitacionesConTripulantes((HashMap<Room,Collection<Tripulante>>) state.getHabitacionesConTripulantes().clone());
 
             Random nuevoPoder = new Random();
             newPerception.setProximoPoder(nuevoPoder.nextInt(3,6));

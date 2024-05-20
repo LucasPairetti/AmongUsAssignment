@@ -50,7 +50,6 @@ public AmongUsEnviromentState(){
         this.setTripulantes_Vivos(init.getCantTripulantes());
         this.setTareas_Pendientes(init.getListaTareas());
 
-
     }
 
     public Object clone(){

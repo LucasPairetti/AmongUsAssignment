@@ -41,6 +41,8 @@ public class matar_Tripulante extends SearchAction {
        AmongUsEnviromentState enviromentState = (AmongUsEnviromentState) est;
        AmongUsImpostorState impostorState = (AmongUsImpostorState) ast;
        
+        System.out.println("IM EXECUTED");
+
         if(!impostorState.getHabitacionesConTripulantes()
         .containsKey(impostorState.getHabitacionActual())) return null;
         else{
