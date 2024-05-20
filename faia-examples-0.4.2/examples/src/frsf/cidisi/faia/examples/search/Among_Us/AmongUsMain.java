@@ -7,8 +7,6 @@ public class AmongUsMain {
         
         AmongUsImpostorAgent impostor = new AmongUsImpostorAgent();
 
-        System.out.println(((AmongUsImpostorState) impostor.getAgentState()).getTareas_Pendientes());
-
         AmongUsEnviroment amongUsEnvironment = new AmongUsEnviroment();
     
         SearchBasedAgentSimulator simulator =

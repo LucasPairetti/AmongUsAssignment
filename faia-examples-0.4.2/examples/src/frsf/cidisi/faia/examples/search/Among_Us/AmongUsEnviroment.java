@@ -43,20 +43,28 @@ public class AmongUsEnviroment extends Environment {
         // Set available rooms to go
         newPerception.setHabitacionesSiguientes(state.getShip().get(state.getAgentPosition()));
 
-        
         //tarea en habitacion
         if(state.getAgentPosition().getTarea()==null){
             newPerception.setTareaEnHabitacion(false);
         } else
         newPerception.setTareaEnHabitacion(true);
 
+        // Habitaciones conectadas
         if(newPerception.getNroDePercepcion()>1){// Mapa general para updatear
             HashMap<Room,Collection<Tripulante>> habitacionesConTripulantes = new HashMap<Room,Collection<Tripulante>>();
-            for(Room room : newPerception.getHabitacionesSiguientes()) {
-                habitacionesConTripulantes.put(room, room.getTripulantesEnHabitacion());
+
+            for(Room room : state.getHabitacionesConectadas()) {
+                if(!room.getTripulantesEnHabitacion().isEmpty()) habitacionesConTripulantes.put(room, room.getTripulantesEnHabitacion());
             }
-        } else {newPerception.setHabitacionesConTripulantes(state.getHabitacionesConTripulantes());
-            System.out.println("IM THE FIRST PERCEPTION!");};
+
+            if(!state.getAgentPosition().getTripulantesEnHabitacion().isEmpty()){
+                System.out.println("IM INSIDE HELP ME");
+                habitacionesConTripulantes.put(state.getAgentPosition(),state.getAgentPosition().getTripulantesEnHabitacion());
+            }
+
+            newPerception.setHabitacionesConTripulantes(habitacionesConTripulantes);
+
+        } else {newPerception.setHabitacionesConTripulantes(state.getHabitacionesConTripulantes());};
 
         /*Habilidad especial, guarda en esta variable todas las habitaciones con al menos 1 tripulante dentro, pero aun no está
                 implementada*/
@@ -71,8 +79,8 @@ public class AmongUsEnviroment extends Environment {
             
         }
 
-        System.out.println("This is the habitaciones con tripulantes in perc");
-        System.out.println(newPerception.getHabitacionesConTripulantes());
+        // System.out.println("This is the habitaciones con tripulantes in perc");
+        // System.out.println(newPerception.getHabitacionesConTripulantes());
         
         // Return perception to Simulator
         return newPerception;

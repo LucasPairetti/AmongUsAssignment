@@ -97,8 +97,6 @@ public class Search extends Solve {
             // This is the first node of the node's queue that will be expanded
             NTree firstNode = (NTree) searchStrategy.getNode();
 
-            //System.out.println("Profundidad: " + firstNode.getDeep());
-
             // If the actual node is a goal node then the search must finish.-
             if (goalTest.isGoalState(firstNode.getAgentState())) {
                 goal = true;
@@ -111,8 +109,7 @@ public class Search extends Solve {
                     SearchBasedAgentState ast = firstNode.getAgentState().clone();
                     // This is the action that can generate a new node.- 
                     SearchAction action = actionList.elementAt(i);
-                    // Ejecuta muchas veces este sysou señal que piensa.
-                    // System.out.println(action.toString());
+                    
                     ast = action.execute(ast);
                     
                     // TODO: HAY QUE VER SI CONVIENE QUE CUANDO EL OPERADOR NO PUEDA SER 

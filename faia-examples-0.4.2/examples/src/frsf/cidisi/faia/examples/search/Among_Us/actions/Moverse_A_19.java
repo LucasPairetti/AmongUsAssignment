@@ -56,6 +56,8 @@ public class Moverse_A_19 extends SearchAction{
         enviromentState.setAgentPosition(habitacionSiguiente);
         enviromentState.setAgentEnergy(impostorState.getEnergia() - 1);
         enviromentState.setHabitacionesConectadas((List<Room>) impostorState.getShip().get(habitacionSiguiente));
+        System.out.println("IM IMPORTANT: ");
+        System.out.println(enviromentState.getHabitacionesConTripulantes());
         return enviromentState;
     }
 

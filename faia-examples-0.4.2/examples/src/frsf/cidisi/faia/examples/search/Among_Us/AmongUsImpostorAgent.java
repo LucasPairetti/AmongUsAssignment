@@ -90,8 +90,6 @@ public class AmongUsImpostorAgent extends SearchBasedAgent {
         // Ask the solver for the best action
         Action selectedAction = null;
         try {
-            System.out.println("Im the solver" + this.getSolver());
-            System.out.println("Im the problem" + this.getProblem());
             // Printea ambos. O sea, el error debe estar en el problema
             
             selectedAction =

@@ -54,6 +54,7 @@ public AmongUsEnviromentState(){
     }
 
     public Object clone(){
+        // System.out.println("IM GETTING CLONED");
         return ship.clone();
     }
 

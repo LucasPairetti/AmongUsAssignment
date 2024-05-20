@@ -174,7 +174,7 @@ public class AmongUsImpostorState extends SearchBasedAgentState {
         this.proximoPoder = amongUsPerception.getProximoPoder();
         this.tareaEnHabitacion=amongUsPerception.getTareaEnHabitacion();
 
-        HashMap<Room, Collection<Tripulante>> positions = new HashMap<Room, Collection<Tripulante>>();
+        HashMap<Room, Collection<Tripulante>> positions = this.habitacionesConTripulantes;
 
         for(Room room : amongUsPerception.getHabitacionesConTripulantes().keySet()) {
             positions.put(room, room.getTripulantesEnHabitacion());

@@ -99,8 +99,6 @@ public class AmongUsPerception extends Perception{
             
         }
 
-        System.out.println(this.habitacionesConTripulantes);
-
     }
 
     public void setHabitacionesSiguientes(Collection<Room> collection) {
@@ -163,9 +161,11 @@ public class AmongUsPerception extends Perception{
 
     @Override
     public String toString() {
-        return "AmongUsPerception [habitacionActual=" + habitacionActual + ", habitacionesSiguientes="
+        ArrayList<String> str = new ArrayList<String>();
+        for(Room r : habitacionesConTripulantes.keySet()) str.add(r.getNombre());
+        return "AmongUsPerception [habitacionActual=" + habitacionActual.getNombre() + ", habitacionesSiguientes="
                 + habitacionesSiguientes + ", energia=" + energia + ", habitacionesConTripulantes="
-                + habitacionesConTripulantes + ", tareaEnHabitacion=" + tareaEnHabitacion + ", nroDePercepcion="
+                + str + ", tareaEnHabitacion=" + tareaEnHabitacion + ", nroDePercepcion="
                 + nroDePercepcion + ", proximoPoder=" + proximoPoder + "]";
     }
 

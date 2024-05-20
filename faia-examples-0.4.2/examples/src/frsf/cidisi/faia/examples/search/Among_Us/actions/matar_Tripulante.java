@@ -15,24 +15,18 @@ public class matar_Tripulante extends SearchAction {
     public SearchBasedAgentState execute(SearchBasedAgentState s) {
         AmongUsImpostorState impostorState = (AmongUsImpostorState) s;
 
-        // Siempre es 0
-        // System.out.println("This are the tripulantes:");
-        // System.out.println(impostorState.getHabitacionActual().getTripulantesEnHabitacion().size());
-        // System.out.println((impostorState.getHabitacionActual()).getNombre());
-
         if(!impostorState.getHabitacionesConTripulantes()
         .containsKey(impostorState.getHabitacionActual())) return null; //hay que agregar que pasa
-        else{   
-            System.out.println("I AM ABOUT TO MURDER! MUAHAHA");
-            Tripulante victima= impostorState.getHabitacionActual().getTripulantesEnHabitacion().get(0);
-            victima.setVivo(false);
-            impostorState.setTripulantes_Vivos(impostorState.getTripulantes_Vivos()-1);
-            impostorState.setEnergia(impostorState.getEnergia()-1);
-            impostorState.getHabitacionesConTripulantes().remove(impostorState.getHabitacionActual());
-            impostorState.getHabitacionActual().getTripulantesEnHabitacion().remove(victima);
-
-            
-            return impostorState; 
+        else{
+            if(!impostorState.getHabitacionActual().getTripulantesEnHabitacion().isEmpty()){
+                Tripulante victima= impostorState.getHabitacionActual().getTripulantesEnHabitacion().get(0);
+                victima.setVivo(false);
+                impostorState.setTripulantes_Vivos(impostorState.getTripulantes_Vivos()-1);
+                impostorState.setEnergia(impostorState.getEnergia()-1);
+                impostorState.getHabitacionesConTripulantes().remove(impostorState.getHabitacionActual());
+                impostorState.getHabitacionActual().getTripulantesEnHabitacion().remove(victima);
+                return impostorState; 
+            } else return null;
         }
 
     }
