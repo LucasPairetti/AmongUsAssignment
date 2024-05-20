@@ -34,4 +34,7 @@ public class Tripulante implements Cloneable {
         }
     }
 
+
+    
+
 }

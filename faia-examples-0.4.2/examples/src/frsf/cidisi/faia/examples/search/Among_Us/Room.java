@@ -81,4 +81,15 @@ public class Room implements Cloneable  {
         }
     }
 
+    @Override
+    public boolean equals(Object obj) {
+       if (obj==null) return false;
+       if(((Room)obj).getId()!=this.id)return false;
+       if(((Room)obj).getNombre()!=this.nombre)return false;
+       else return true;
+
+    }
+
+    
+
 }

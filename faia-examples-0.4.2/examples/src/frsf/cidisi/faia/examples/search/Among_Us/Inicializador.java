@@ -235,15 +235,7 @@ public class Inicializador implements Cloneable {
         try {
             Inicializador clone = (Inicializador) super.clone();
     
-            // Clonar la posición del agente
-            clone.agentPosition = this.agentPosition.clone();
-    
-            // Clonar habitaciones conectadas
-            clone.habitacionesConectadas = new ArrayList<>();
-            for (Room room : this.habitacionesConectadas) {
-                clone.habitacionesConectadas.add(room.clone());
-            }
-    
+          
             // Clonar el ship
             clone.ship = new HashMap<>();
             for (HashMap.Entry<Room, Collection<Room>> entry : this.ship.entrySet()) {
@@ -254,20 +246,40 @@ public class Inicializador implements Cloneable {
                 }
                 clone.ship.put(key, value);
             }
+            
+                for(Room room: clone.ship.keySet()){
+                    //posicion del agente clonada
+                    if(room.getId()==this.agentPosition.getId())
+                    clone.agentPosition = room;
+                }
+            
+
+              
     
+              // Clonar habitaciones conectadas
+              clone.habitacionesConectadas = new ArrayList<>();
+              clone.habitacionesConectadas.addAll( clone.ship.get(clone.agentPosition));
+              
+      
             // Clonar lista de tareas
             clone.listaTareas = new ArrayList<>(this.listaTareas); // Asumimos que Tarea es un enum o inmutable
     
             // Clonar habitaciones con tripulantes
             clone.habitacionesConTripulantes = new HashMap<>();
-            for (HashMap.Entry<Room, Collection<Tripulante>> entry : this.habitacionesConTripulantes.entrySet()) {
-                Room key = entry.getKey().clone();
-                Collection<Tripulante> value = new ArrayList<>();
-                for (Tripulante tripulante : entry.getValue()) {
-                    value.add(tripulante.clone());
-                }
-                clone.habitacionesConTripulantes.put(key, value);
+            // Primeros tripulantes en habitacionews
+       
+        if(!clone.agentPosition.getTripulantesEnHabitacion().isEmpty()){
+            clone.habitacionesConTripulantes.put(clone.agentPosition, clone.agentPosition.getTripulantesEnHabitacion());
+        }
+        
+
+
+        for(Room room: clone.habitacionesConectadas){
+            if(!room.getTripulantesEnHabitacion().isEmpty()){
+                clone.habitacionesConTripulantes.put(room, room.getTripulantesEnHabitacion());
             }
+
+        }
     
             // Los demás atributos son tipos primitivos o inmutables, por lo que se copian directamente
             clone.agentEnergy = this.agentEnergy;
