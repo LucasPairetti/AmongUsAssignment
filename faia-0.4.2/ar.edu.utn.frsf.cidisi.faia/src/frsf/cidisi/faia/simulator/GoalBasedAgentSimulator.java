@@ -92,7 +92,11 @@ public abstract class GoalBasedAgentSimulator extends Simulator {
             System.out.println("Action returned: " + action);
             System.out.println();
 
+            
+           
             this.actionReturned(agent, action);
+            
+            
             
         } while (!this.agentSucceeded(action) && !this.agentFailed(action));
 

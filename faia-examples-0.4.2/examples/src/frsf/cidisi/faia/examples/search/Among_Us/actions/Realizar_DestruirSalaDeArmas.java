@@ -35,14 +35,14 @@ public class Realizar_DestruirSalaDeArmas extends SearchAction {
     public EnvironmentState execute(AgentState ast, EnvironmentState est) {
         AmongUsEnviromentState environmentState = (AmongUsEnviromentState) est;
         AmongUsImpostorState impostorState = (AmongUsImpostorState) ast;
-        if (impostorState.getHabitacionActual().getTarea()==null)
+        if (environmentState.getAgentPosition().getTarea()==null)
         return null;
-        if (!impostorState.getHabitacionActual().getTarea().equals(tarea))
+        if (!environmentState.getAgentPosition().getTarea().equals(tarea))
             return null;
-            else if(!impostorState.getTareas_Pendientes().contains(tarea))
+            else if(!environmentState.getTareas_Pendientes().contains(tarea))
         return null;
         else {
-            
+            impostorState.getTareas_Pendientes().remove(Tarea.DESTRUIR_SALA_ARMAS);
             environmentState.setAgentEnergy(impostorState.getEnergia() - 1);
             environmentState.getTareas_Pendientes().remove(Tarea.DESTRUIR_SALA_ARMAS);
             return environmentState;

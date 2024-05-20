@@ -30,6 +30,7 @@ public class Moverse_A_15 extends SearchAction{
             impostorState.setEnergia(impostorState.getEnergia() - 1);
             impostorState.setHabitacionActual(habitacionSiguiente);
             impostorState.setHabitacionesConectadas((List<Room>) impostorState.getShip().get(habitacionSiguiente));
+
             return impostorState;
         }
     }
@@ -54,8 +55,11 @@ public class Moverse_A_15 extends SearchAction{
         }
 
         enviromentState.setAgentPosition(habitacionSiguiente);
-        enviromentState.setAgentEnergy(impostorState.getEnergia() - 1);
-        enviromentState.setHabitacionesConectadas((List<Room>) impostorState.getShip().get(habitacionSiguiente));
+        enviromentState.setAgentEnergy(enviromentState.getAgentEnergy() - 1);
+        enviromentState.setHabitacionesConectadas((List<Room>) enviromentState.getShip().get(habitacionSiguiente));
+        impostorState.setEnergia(impostorState.getEnergia() - 1);
+        impostorState.setHabitacionActual(habitacionSiguiente);
+        impostorState.setHabitacionesConectadas((List<Room>) impostorState.getShip().get(habitacionSiguiente));
         return enviromentState;
     }
 

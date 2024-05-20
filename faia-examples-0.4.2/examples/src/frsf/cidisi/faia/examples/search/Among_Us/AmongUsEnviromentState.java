@@ -53,6 +53,7 @@ public AmongUsEnviromentState(){
     }
 
     public Object clone(){
+
         return ship.clone();
     }
 
@@ -73,7 +74,8 @@ public AmongUsEnviromentState(){
         }
         str = str + " ]";
 
-        str = str + "\nHABITACIONES C TRIPULANTES: " + this.getHabitacionesConTripulantes();
+        str = str + "\nHABITACIONES C TRIPULANTES: " + this.getHabitacionesConTripulantes()+ " \n";
+        
 
         return str;
     }

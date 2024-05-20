@@ -50,13 +50,13 @@ public class AmongUsEnviroment extends Environment {
         } else
         newPerception.setTareaEnHabitacion(true);
 
-        // Habitaciones conectadas
+        // Tripulantes en habitaciones conectadas!
         if(newPerception.getNroDePercepcion()>1){// Mapa general para updatear
             
             HashMap<Room,Collection<Tripulante>> habitacionesConTripulantes = new HashMap<Room,Collection<Tripulante>>();
 
             for(Room room : state.getHabitacionesConectadas()) {
-                if(!room.getTripulantesEnHabitacion().isEmpty()) habitacionesConTripulantes.put(room, room.getTripulantesEnHabitacion());
+                if(!room.getTripulantesEnHabitacion().isEmpty() ) habitacionesConTripulantes.put(room, room.getTripulantesEnHabitacion());
             }
 
             if(!state.getAgentPosition().getTripulantesEnHabitacion().isEmpty()){

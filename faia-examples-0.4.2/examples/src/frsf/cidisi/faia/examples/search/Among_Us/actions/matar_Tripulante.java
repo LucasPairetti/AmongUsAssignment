@@ -11,20 +11,26 @@ import frsf.cidisi.faia.state.EnvironmentState;
 
 public class matar_Tripulante extends SearchAction {
     
+    
     @Override
     public SearchBasedAgentState execute(SearchBasedAgentState s) {
         AmongUsImpostorState impostorState = (AmongUsImpostorState) s;
-
-        if(!impostorState.getHabitacionesConTripulantes()
-        .containsKey(impostorState.getHabitacionActual())) return null; //hay que agregar que pasa
+      
+       
+        if(!impostorState.getHabitacionesConTripulantes().containsKey(impostorState.getHabitacionActual()))
+         return null;
         else{
             if(!impostorState.getHabitacionActual().getTripulantesEnHabitacion().isEmpty()){
+                
                 Tripulante victima= impostorState.getHabitacionActual().getTripulantesEnHabitacion().get(0);
                 victima.setVivo(false);
                 impostorState.setTripulantes_Vivos(impostorState.getTripulantes_Vivos()-1);
                 impostorState.setEnergia(impostorState.getEnergia()-1);
-                impostorState.getHabitacionesConTripulantes().remove(impostorState.getHabitacionActual());
+                
                 impostorState.getHabitacionActual().getTripulantesEnHabitacion().remove(victima);
+                if(impostorState.getHabitacionActual().getTripulantesEnHabitacion().isEmpty())
+                impostorState.getHabitacionesConTripulantes().remove(impostorState.getHabitacionActual());
+
                 return impostorState; 
             } else return null;
         }
@@ -42,18 +48,26 @@ public class matar_Tripulante extends SearchAction {
        AmongUsImpostorState impostorState = (AmongUsImpostorState) ast;
        
         System.out.println("IM EXECUTED");
+        
+        System.out.println(enviromentState.getAgentPosition().getNombre());
+        if(!enviromentState.getHabitacionesConTripulantes().containsKey(enviromentState.getAgentPosition())){
+            return null;
+        } 
 
-        if(!impostorState.getHabitacionesConTripulantes()
-        .containsKey(impostorState.getHabitacionActual())) return null;
         else{
-
+            
         Tripulante victima= enviromentState.getAgentPosition().getTripulantesEnHabitacion().get(0);
         victima.setVivo(false);
+
+        //actualizo ambiente
         enviromentState.getHabitacionesConTripulantes().remove(enviromentState.getAgentPosition());
         enviromentState.getAgentPosition().getTripulantesEnHabitacion().remove(victima);
         enviromentState.setAgentEnergy(impostorState.getEnergia()-1);
-        enviromentState.setTripulantes_Vivos(impostorState.getTripulantes_Vivos()-1);
-        
+                impostorState.setTripulantes_Vivos(impostorState.getTripulantes_Vivos()-1);
+                impostorState.setEnergia(impostorState.getEnergia()-1);
+                impostorState.getHabitacionActual().getTripulantesEnHabitacion().remove(victima);
+                if(impostorState.getHabitacionActual().getTripulantesEnHabitacion().isEmpty())
+                impostorState.getHabitacionesConTripulantes().remove(impostorState.getHabitacionActual());
        return enviromentState;
     }
     }
