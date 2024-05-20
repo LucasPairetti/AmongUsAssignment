@@ -76,6 +76,7 @@ public AmongUsEnviromentState(){
         str = str + " ]";
 
         str = str + "\nHABITACIONES C TRIPULANTES: " + this.getHabitacionesConTripulantes()+ " \n";
+        str = str + "\n cant hab con TRIPULANTES: " + this.getHabitacionesConTripulantes().keySet().size()+ " \n";
         
 
         return str;

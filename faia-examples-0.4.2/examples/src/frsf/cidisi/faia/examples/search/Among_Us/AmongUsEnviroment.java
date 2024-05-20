@@ -42,8 +42,8 @@ public class AmongUsEnviroment extends Environment {
         newPerception.setEnergia(state.getAgentEnergy());
 
         // Set available rooms to go
-        newPerception.setHabitacionesSiguientes(state.getShip().get(state.getAgentPosition()));
-
+        newPerception.setHabitacionesSiguientes(state.getHabitacionesConectadas());
+        
         //tarea en habitacion
         if(state.getAgentPosition().getTarea()==null){
             newPerception.setTareaEnHabitacion(false);

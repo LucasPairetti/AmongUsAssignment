@@ -17,11 +17,15 @@ public class matar_Tripulante extends SearchAction {
     public SearchBasedAgentState execute(SearchBasedAgentState s) {
         AmongUsImpostorState impostorState = (AmongUsImpostorState) s;
       i++;
-      System.out.println("execute kill agente lista: "+ i  +" "+impostorState.getHabitacionesConTripulantes());
-      System.out.println("execute kill agente tripvivos: "+ i +" "+impostorState.getTripulantes_Vivos());
-       
-        if(!impostorState.getHabitacionesConTripulantes().containsKey(impostorState.getHabitacionActual()))
-         return null;
+      System.out.println("execute kill agente lista: "+ i  +" "+impostorState);
+      
+      
+
+        if(!impostorState.getHabitacionesConTripulantes().containsKey(impostorState.getHabitacionActual())){
+            System.out.println("Return 1 kill");
+            return null;
+        }
+         
         else{
             if(!impostorState.getHabitacionActual().getTripulantesEnHabitacion().isEmpty()){
                 
@@ -34,8 +38,12 @@ public class matar_Tripulante extends SearchAction {
                 if(impostorState.getHabitacionActual().getTripulantesEnHabitacion().isEmpty())
                 impostorState.getHabitacionesConTripulantes().remove(impostorState.getHabitacionActual());
 
+                System.out.println("Return 2 kill");
                 return impostorState; 
-            } else return null;
+            } else{
+                System.out.println("Return 3 kill");
+                return null;
+            } 
         }
 
     }

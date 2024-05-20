@@ -167,7 +167,7 @@ public class AmongUsImpostorState extends SearchBasedAgentState {
     public void updateState(Perception p) {
 
        AmongUsPerception amongUsPerception = (AmongUsPerception) p;
-
+      
         this.energia=amongUsPerception.getEnergia();
         this.habitacionActual=amongUsPerception.getHabitacionActual();
         this.habitacionesConectadas=amongUsPerception.getHabitacionesSiguientes();
@@ -176,7 +176,6 @@ public class AmongUsImpostorState extends SearchBasedAgentState {
         this.tareaEnHabitacion=amongUsPerception.getTareaEnHabitacion();
 
         
-
         for(Room habitacion:  amongUsPerception.getHabitacionesConTripulantes().keySet()){
             if(!this.habitacionesConTripulantes.containsKey(habitacion))
             this.habitacionesConTripulantes.put(habitacion, amongUsPerception.getHabitacionesConTripulantes().get(habitacion));
@@ -233,7 +232,8 @@ public class AmongUsImpostorState extends SearchBasedAgentState {
         str = str + " energy=" + this.energia + "\"\n";
         str = str + " habitaciones conectadas=" + habitaciones_conectadas + "\n";
         str = str + " tareasPorRealizar=" + TareasPorRealizar + "\n";
-        
+        str = str + "\nHABITACIONES C TRIPULANTES: " + this.getHabitacionesConTripulantes()+ " \n";
+        str = str + "\n Tripulantes vivos: " + this.getTripulantes_Vivos()+ " \n";
         return str;
         
     }

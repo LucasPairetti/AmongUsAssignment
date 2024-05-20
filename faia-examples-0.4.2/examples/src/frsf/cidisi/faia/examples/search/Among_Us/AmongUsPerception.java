@@ -40,6 +40,7 @@ public class AmongUsPerception extends Perception{
         AmongUsEnviromentState state = (AmongUsEnviromentState) environment.getEnvironmentState();
         HashMap<Room, Collection<Room>> ship = state.getShip();
         
+        
         // Set agent position
         this.habitacionActual = state.getAgentPosition();
 

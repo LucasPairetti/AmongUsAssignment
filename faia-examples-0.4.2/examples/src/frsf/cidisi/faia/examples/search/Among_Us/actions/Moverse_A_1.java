@@ -17,6 +17,8 @@ public class Moverse_A_1 extends SearchAction{
     public SearchBasedAgentState execute(SearchBasedAgentState s) {
         
         AmongUsImpostorState impostorState = (AmongUsImpostorState) s;
+        
+
         Collection<Room> habitacionesSiguientes = impostorState.getShip().keySet();
         Room habitacionSiguiente = new Room(0, null);
         for(Room habitacion : habitacionesSiguientes){
