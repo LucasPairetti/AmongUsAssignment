@@ -1,9 +1,0 @@
-Hicimos:
-AGEnvironment
-AGEnvironmentState
-AGPerception
-
-Quedaria:
-AGImpostorState
-Tripulante (Podria agregar boolean por si esta eliminado o no pero depende implementacion)
-Acciones -> preguntar como hacer acciones donde pasas argumentos
