@@ -10,8 +10,11 @@ import frsf.cidisi.faia.agent.search.Problem;
 import frsf.cidisi.faia.agent.search.SearchAction;
 import frsf.cidisi.faia.agent.search.SearchBasedAgent;
 import frsf.cidisi.faia.examples.search.amongus.actions.matar_Tripulante;
+import frsf.cidisi.faia.solver.search.AStarSearch;
 import frsf.cidisi.faia.solver.search.BreathFirstSearch;
 import frsf.cidisi.faia.solver.search.DepthFirstSearch;
+import frsf.cidisi.faia.solver.search.IEstimatedCostFunction;
+import frsf.cidisi.faia.solver.search.IStepCostFunction;
 import frsf.cidisi.faia.solver.search.Search;
 import frsf.cidisi.faia.examples.search.amongus.actions.Moverse_A_1;
 import frsf.cidisi.faia.examples.search.amongus.actions.Moverse_A_10;
@@ -92,12 +95,16 @@ public class Impostor extends SearchBasedAgent {
 
     @Override
     public Action selectAction() { //copypaste
-          // Create the search strategy
-        DepthFirstSearch strategy = new DepthFirstSearch();
+        //   // Create the search strategy
+        // BreathFirstSearch strategy = new BreathFirstSearch();
+
+        IStepCostFunction cost = new CostFunction();
+        IEstimatedCostFunction heuristic = new Heuristic();
+        AStarSearch strategy = new AStarSearch(cost, heuristic);
 
         // Create a Search object with the strategy
         Search searchSolver = new Search(strategy);
-
+        
         /* Generate an XML file with the search tree. It can also be generated
          * in other formats like PDF with PDF_TREE */
         searchSolver.setVisibleTree(Search.XML_TREE);

@@ -21,6 +21,7 @@ public class matar_Tripulante extends SearchAction{
         impostorState.getAgentPosition().RemoveCrewmate(); //mato al primero de la lista 
         impostorState.setCrewmatesLeft(impostorState.getCrewmatesLeft()-1); //reduzco uno de la lista  
         impostorState.setAgentEnergy(impostorState.getAgentEnergy()-1); //reduzco energia
+        impostorState.incrementCost(this.getCost());
 
 
         return impostorState;
@@ -32,8 +33,7 @@ public class matar_Tripulante extends SearchAction{
 
     @Override
     public Double getCost() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getCost'");
+        return 2.;
     }
 
     @Override

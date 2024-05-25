@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "AmongUsMain",
+            "request": "launch",
+            "mainClass": "frsf.cidisi.faia.examples.search.amongus.AmongUsMain",
+            "projectName": "examples"
+        },
+        {
+            "type": "java",
             "name": "Current File",
             "request": "launch",
             "mainClass": "${file}"

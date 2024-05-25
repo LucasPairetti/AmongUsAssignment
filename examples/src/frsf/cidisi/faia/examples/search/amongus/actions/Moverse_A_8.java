@@ -17,8 +17,9 @@ public class Moverse_A_8 extends SearchAction{
 
         if(impostorState.getAgentEnergy()>0 && impostorState.isConnected(idRoom)){
 
-            impostorState.setAgentEnergy(impostorState.getAgentEnergy()-1);
+            impostorState.setAgentEnergy(impostorState.getAgentEnergy()-2);
             impostorState.setAgentPosition(impostorState.getRoomByID(idRoom));
+            impostorState.incrementCost(this.getCost());
 
 
             return impostorState;
@@ -31,8 +32,7 @@ public class Moverse_A_8 extends SearchAction{
 
     @Override
     public Double getCost() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getCost'");
+        return 5.;
     }
 
     @Override
@@ -41,10 +41,10 @@ public class Moverse_A_8 extends SearchAction{
     AmongUsEnvironmentState envState = (AmongUsEnvironmentState) est;
         if(envState.getAgentEnergy()>0 && envState.isConnected(idRoom)){
             //act ambiente
-            envState.setAgentEnergy(envState.getAgentEnergy()-1);
+            envState.setAgentEnergy(envState.getAgentEnergy()-2);
             envState.setAgentPosition(envState.getRoomByID(idRoom));
             //act agente
-            impostorState.setAgentEnergy(impostorState.getAgentEnergy()-1);
+            impostorState.setAgentEnergy(impostorState.getAgentEnergy()-2);
             impostorState.setAgentPosition(impostorState.getRoomByID(idRoom));
 
             return envState;

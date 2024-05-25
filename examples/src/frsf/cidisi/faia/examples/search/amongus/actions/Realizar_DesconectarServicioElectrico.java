@@ -21,7 +21,8 @@ public class Realizar_DesconectarServicioElectrico extends SearchAction{
           impostorState.getAgentPosition().getTarea().equals(task)){   //checkea si la habitacion tiene esta misma tarea
             impostorState.setAgentEnergy(impostorState.getAgentEnergy()-1); //reducir enegia
             impostorState.getTaskList().remove(task); //remover task
-            
+            impostorState.incrementCost(this.getCost());
+
             return impostorState;
           }
 
@@ -35,8 +36,7 @@ public class Realizar_DesconectarServicioElectrico extends SearchAction{
 
     @Override
     public Double getCost() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getCost'");
+        return 3.;
     }
 
     @Override

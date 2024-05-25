@@ -17,18 +17,20 @@ public class ImpostorState extends SearchBasedAgentState {
     private Room agentPosition;
     private int crewmatesLeft;
     private ArrayList<Task> taskList;
-
+    private Double cost;
+    
     public ImpostorState() {
         initState();
     }
 
     public ImpostorState(HashMap<Room, ArrayList<Room>> ship, int agentEnergy, Room agentPosition, int crewmatesLeft,
-            ArrayList<Task> taskList) {
+            ArrayList<Task> taskList, Double cost) {
         this.ship = ship;
         this.agentEnergy = agentEnergy;
         this.agentPosition = agentPosition;
         this.crewmatesLeft = crewmatesLeft;
         this.taskList = taskList;
+        this.cost = cost;
     }
 
     @Override
@@ -60,7 +62,7 @@ public class ImpostorState extends SearchBasedAgentState {
             {newAgentPosition=r; break;}
         }
 
-        return new ImpostorState(newShip, agentEnergy, newAgentPosition, crewmatesLeft,(ArrayList<Task>) taskList.clone());
+        return new ImpostorState(newShip, agentEnergy, newAgentPosition, crewmatesLeft,(ArrayList<Task>) taskList.clone(), this.cost);
 
     }
 
@@ -135,15 +137,17 @@ public class ImpostorState extends SearchBasedAgentState {
         ship.put(nodo13, new ArrayList<Room>(Arrays.asList(nodo1, nodo10, nodo11, nodo12, nodo14)));
         ship.put(nodo14, new ArrayList<Room>(Arrays.asList(nodo1, nodo13)));
 
+        // Initialize cost
+        this.cost=0.;
+
         // Let perception set the elements
-        this.agentEnergy = 100;
+        this.agentEnergy = 50;
         this.agentPosition = nodo12;
-        this.crewmatesLeft = 1;
+        this.crewmatesLeft = 3;
         this.taskList = new ArrayList<Task>();
         this.taskList.add(Task.DESCONECTAR_SERVICIO_ELECTRICO);
-        this.taskList.add(Task.DESTRUIR_REACTOR);
-        this.taskList.add(Task.DESTRUIR_SALA_ARMAS);
-
+        // this.taskList.add(Task.DESTRUIR_REACTOR);
+        // this.taskList.add(Task.DESTRUIR_SALA_ARMAS);
     }
 
     public HashMap<Room, ArrayList<Room>> getShip() {
@@ -267,6 +271,14 @@ public class ImpostorState extends SearchBasedAgentState {
         }
 
         return clonedGraph;
+    }
+
+    public Double getCost() {
+        return cost;
+    }
+
+    public void incrementCost(Double cost) {
+        this.cost += cost;
     }
 
 }

@@ -83,9 +83,6 @@ public class Search extends Solve {
         SearchBasedAgentState agentState = problem.getAgentState();//.clone();
         GoalTest goalTest = problem.getGoalState();
 
-        System.out.println("IM AT SEARCH");
-        System.out.println(agentState);
-
         int nodeIdx = 1;
 
         tree = new NTree();

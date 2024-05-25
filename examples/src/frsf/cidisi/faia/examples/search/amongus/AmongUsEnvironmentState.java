@@ -18,6 +18,7 @@ public class AmongUsEnvironmentState extends EnvironmentState {
     private int numberPercepcion;
     private int nextPower;
     private ArrayList<Task> taskList;
+    private int initialEnergy;
 
     public AmongUsEnvironmentState() {
         initState();
@@ -65,22 +66,22 @@ public class AmongUsEnvironmentState extends EnvironmentState {
         Random r = new Random();
         this.agentPosition = nodo12;
         // this.agentEnergy = r.nextInt(30, 151);
-        this.agentEnergy = 100;
-        this.crewmatesLeft = 1;
+        this.agentEnergy = 50;
+        this.initialEnergy = this.agentEnergy;
+        this.crewmatesLeft = 3;
 
         // Set crewmates //podriamos poner un for(int i=0; i<this.crewmatesLeft;i++)
         // para la creacion de tripulantes
-        Crewmate crewmate = new Crewmate(0);
         ArrayList<Room> nodos = new ArrayList<Room>(ship.keySet());
-
-        // Add crewmate
-        nodos.get(r.nextInt(0,15)).addCrewmate(crewmate);
-
+        for(int i = 0; i<crewmatesLeft; i++) {
+            // Add crewmate
+            nodos.get(r.nextInt(0,14)).addCrewmate(new Crewmate(i));
+        }
         // Tareas -> estas son las pendientes
         ArrayList<Task> listaTareas = new ArrayList<Task>();
         listaTareas.add(Task.DESCONECTAR_SERVICIO_ELECTRICO);
-        listaTareas.add(Task.DESTRUIR_REACTOR);
-        listaTareas.add(Task.DESTRUIR_SALA_ARMAS);
+        // listaTareas.add(Task.DESTRUIR_REACTOR);
+        // listaTareas.add(Task.DESTRUIR_SALA_ARMAS);
         this.taskList = listaTareas;
 
         Random nro = new Random();
@@ -231,6 +232,20 @@ public class AmongUsEnvironmentState extends EnvironmentState {
         }
 
         return room;
+    }
+
+    public int getInitialEnergy() {
+        return initialEnergy;
+    }
+
+    public void moveCrewmates() {
+        Random random = new Random();
+        for(Room r : this.getRoomsWithCrewmate()) {
+            for(Crewmate c : r.getCrewmatesInRoom()) {
+                r.getCrewmatesInRoom().remove(c);
+                ship.get(r).get(random.nextInt(0, ship.get(r).size()+1)).addCrewmate(c);
+            }
+        }
     }
 
 }

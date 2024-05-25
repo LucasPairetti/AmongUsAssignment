@@ -22,6 +22,7 @@ public class Realizar_DestruirSalaDeArmas extends SearchAction{
 
             impostorState.setAgentEnergy(impostorState.getAgentEnergy()-1); //reducir enegia
             impostorState.getTaskList().remove(task); //remover task
+            impostorState.incrementCost(this.getCost());
 
 
             return impostorState;
@@ -37,8 +38,7 @@ public class Realizar_DestruirSalaDeArmas extends SearchAction{
 
     @Override
     public Double getCost() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getCost'");
+        return 3.;
     }
 
     @Override
