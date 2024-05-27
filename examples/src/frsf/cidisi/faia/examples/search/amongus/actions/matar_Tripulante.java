@@ -53,6 +53,7 @@ public class matar_Tripulante extends SearchAction{
         envState.getAgentPosition().RemoveCrewmate(); //mato al primero de la lista 
         envState.setCrewmatesLeft(envState.getCrewmatesLeft()-1); //reduzco uno de la lista  
         envState.setAgentEnergy(envState.getAgentEnergy()-1); //reduzco energia
+        envState.moveCrewmates();
 
         // actualizo al agente
         impostorState.getAgentPosition().RemoveCrewmate(); //mato al primero de la lista 

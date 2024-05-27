@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 import frsf.cidisi.faia.agent.Perception;
 import frsf.cidisi.faia.agent.search.SearchBasedAgentState;
@@ -71,6 +72,12 @@ public class ImpostorState extends SearchBasedAgentState {
         AmongUsPerception perception = (AmongUsPerception) p;
         List<Room> updateThisRooms= perception.getRoomsWithCrewMates();
 
+        if(perception.isSuperpower()) {
+            for(Room room : this.getRoomsWithCrewmate()) {
+                room.setCrewmatesInRoom(new ArrayList<Crewmate>());
+            }
+        }
+
         for(Room room: updateThisRooms){
             int id= room.getId();
             Room impostorStateRoom= this.getRoomByID(id);
@@ -80,6 +87,19 @@ public class ImpostorState extends SearchBasedAgentState {
                     updateCrewmates.add(new Crewmate(crew.getId())); //creo un tripulante y lo agrego a la lista
                 } 
                 impostorStateRoom.setCrewmatesInRoom(updateCrewmates);
+            }
+        }
+
+        if(!perception.isSuperpower()) {
+            ArrayList<Integer> idsConnected = (ArrayList<Integer>) this.getConnectedRooms(this.agentPosition).
+            stream().map((r)->r.getId()).collect(Collectors.toList());
+            idsConnected.add(this.agentPosition.getId());
+
+            ArrayList<Integer> idsPerception = (ArrayList<Integer>) perception.getRoomsWithCrewMates().
+            stream().map((r)->r.getId()).collect(Collectors.toList());
+
+            for(int id : idsConnected) {
+                if(!idsPerception.contains(id)) this.getRoomByID(id).setCrewmatesInRoom(new ArrayList<Crewmate>());
             }
         }
 
@@ -140,9 +160,13 @@ public class ImpostorState extends SearchBasedAgentState {
         // Initialize cost
         this.cost=0.;
 
+        Initializer initializer = Initializer.getInstance();
+
+        ArrayList<Room> keys = new ArrayList<Room>(ship.keySet());
         // Let perception set the elements
-        this.agentEnergy = 50;
-        this.agentPosition = nodo12;
+        this.agentEnergy = initializer.getAgentEnergy();
+        this.agentPosition = keys.stream().filter((r)-> r.getId()==initializer.getAgentPosition()).collect(Collectors.toList()).get(0);
+        System.out.println(agentPosition.getName());
         this.crewmatesLeft = 3;
         this.taskList = new ArrayList<Task>();
         this.taskList.add(Task.DESCONECTAR_SERVICIO_ELECTRICO);

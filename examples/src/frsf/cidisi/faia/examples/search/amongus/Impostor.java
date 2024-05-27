@@ -53,20 +53,20 @@ public class Impostor extends SearchBasedAgent {
         // Create the operators
         Vector<SearchAction> operators = new Vector<SearchAction>();
         operators.addElement(new matar_Tripulante());
+        operators.addElement(new Moverse_A_14());
         operators.addElement(new Moverse_A_1());
-        operators.addElement(new Moverse_A_2());
-        operators.addElement(new Moverse_A_3());
         operators.addElement(new Moverse_A_4());
         operators.addElement(new Moverse_A_5());
-        operators.addElement(new Moverse_A_6());
-        operators.addElement(new Moverse_A_7());
-        operators.addElement(new Moverse_A_8());
         operators.addElement(new Moverse_A_9());
-        operators.addElement(new Moverse_A_10());
+        operators.addElement(new Moverse_A_2());
         operators.addElement(new Moverse_A_11());
-        operators.addElement(new Moverse_A_12());
         operators.addElement(new Moverse_A_13());
-        operators.addElement(new Moverse_A_14());
+        operators.addElement(new Moverse_A_8());
+        operators.addElement(new Moverse_A_6());
+        operators.addElement(new Moverse_A_10());
+        operators.addElement(new Moverse_A_3());
+        operators.addElement(new Moverse_A_7());
+        operators.addElement(new Moverse_A_12());
         operators.addElement(new Moverse_A_15());
         operators.addElement(new Moverse_A_16());
         operators.addElement(new Moverse_A_17());
@@ -107,7 +107,7 @@ public class Impostor extends SearchBasedAgent {
         
         /* Generate an XML file with the search tree. It can also be generated
          * in other formats like PDF with PDF_TREE */
-        searchSolver.setVisibleTree(Search.XML_TREE);
+        searchSolver.setVisibleTree(Search.PDF_TREE);
 
         // Set the Search searchSolver.
         this.setSolver(searchSolver);

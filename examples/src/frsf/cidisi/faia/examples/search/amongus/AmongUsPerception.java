@@ -8,8 +8,10 @@ import frsf.cidisi.faia.agent.Perception;
 import frsf.cidisi.faia.environment.Environment;
 
 public class AmongUsPerception extends Perception {
-    List<Room> roomsWithCrewMates; //El impostor debe buscar y actualizar sus roomsWithCrewMates en base al idRoom (evita referencia cruzada)
-  
+    private List<Room> roomsWithCrewMates = new ArrayList<Room>(); //El impostor debe buscar y actualizar sus roomsWithCrewMates en base al idRoom (evita referencia cruzada)
+    private boolean superpower = false;
+
+
     private String RoomName; //solo empleado para el to String
     
     @Override
@@ -42,6 +44,14 @@ public class AmongUsPerception extends Perception {
     public String toString() {
        String str="Habitaciones con tripulantes: "+ roomsWithCrewMates.toString() +"\n";
        return str;
+    }
+
+    public boolean isSuperpower() {
+        return superpower;
+    }
+
+    public void setSuperpower(boolean superpower) {
+        this.superpower = superpower;
     }
 
     

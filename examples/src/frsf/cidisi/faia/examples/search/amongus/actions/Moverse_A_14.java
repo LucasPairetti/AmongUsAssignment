@@ -43,6 +43,7 @@ public class Moverse_A_14 extends SearchAction{
             //act ambiente
             envState.setAgentEnergy(envState.getAgentEnergy()-2);
             envState.setAgentPosition(envState.getRoomByID(idRoom));
+            envState.moveCrewmates();
             //act agente
             impostorState.setAgentEnergy(impostorState.getAgentEnergy()-2);
             impostorState.setAgentPosition(impostorState.getRoomByID(idRoom));

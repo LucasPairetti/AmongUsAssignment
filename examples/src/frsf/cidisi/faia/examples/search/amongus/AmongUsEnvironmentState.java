@@ -6,6 +6,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 import frsf.cidisi.faia.state.EnvironmentState;
 
@@ -60,13 +61,14 @@ public class AmongUsEnvironmentState extends EnvironmentState {
         ship.put(nodo13, new ArrayList<Room>(Arrays.asList(nodo1, nodo10, nodo11, nodo12, nodo14)));
         ship.put(nodo14, new ArrayList<Room>(Arrays.asList(nodo1, nodo13)));
         
+        Initializer initializer = Initializer.getInstance();
 
         // Params
         ArrayList<Room> keys = new ArrayList<Room>(ship.keySet());
         Random r = new Random();
-        this.agentPosition = nodo12;
-        // this.agentEnergy = r.nextInt(30, 151);
-        this.agentEnergy = 50;
+        this.agentPosition = keys.stream().filter((room)-> room.getId()==initializer.getAgentPosition()).collect(Collectors.toList()).get(0);
+        System.out.println(agentPosition.getName());
+        this.agentEnergy = initializer.getAgentEnergy();
         this.initialEnergy = this.agentEnergy;
         this.crewmatesLeft = 3;
 
@@ -240,12 +242,41 @@ public class AmongUsEnvironmentState extends EnvironmentState {
 
     public void moveCrewmates() {
         Random random = new Random();
-        for(Room r : this.getRoomsWithCrewmate()) {
-            for(Crewmate c : r.getCrewmatesInRoom()) {
-                r.getCrewmatesInRoom().remove(c);
-                ship.get(r).get(random.nextInt(0, ship.get(r).size()+1)).addCrewmate(c);
+        
+        // Get all rooms with crewmates
+        ArrayList<Room> roomsWithCrewmates = getRoomsWithCrewmate();
+        
+        // Iterate through each room
+        for (Room currentRoom : roomsWithCrewmates) {
+            List<Crewmate> crewmates = currentRoom.getCrewmatesInRoom();
+            
+            // Create a new list to avoid ConcurrentModificationException
+            List<Crewmate> crewmatesToMove = new ArrayList<>(crewmates);
+            
+            for (Crewmate crewmate : crewmatesToMove) {
+                Double calculated = random.nextDouble();
+                System.out.println("Probability");
+                System.out.println(calculated);
+                // 33% chance to move the crewmate
+                if (calculated < 0.33) {
+                    // Get the list of connected rooms
+                    ArrayList<Room> connectedRooms = ship.get(currentRoom);
+                    
+                    if (connectedRooms != null && !connectedRooms.isEmpty()) {
+                        // Select a random connected room
+                        Room newRoom = connectedRooms.get(random.nextInt(connectedRooms.size()));
+                        
+                        // Move crewmate to the new room
+                        currentRoom.RemoveCrewmate(crewmate);  
+                        newRoom.addCrewmate(crewmate);
+                    }
+                }
             }
         }
+
+        System.out.println("After moving: ");
+        System.out.println(this.getRoomsWithCrewmate());
+
     }
 
 }

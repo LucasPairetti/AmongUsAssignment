@@ -25,10 +25,9 @@ public class AmongUsEnvironment extends Environment {
         AmongUsPerception newPerception = new AmongUsPerception();
         ArrayList<Room>roomsWithCrewMates = new ArrayList<Room>();
 
-        System.out.println(state.getRoomsWithCrewmate());
-
         //TODO: Solucionar primera percepcion
         if(state.getNumberPercepcion()==state.getNextPower()){ //Actualizacion de superpoder
+            newPerception.setSuperpower(true);
             roomsWithCrewMates= state.getRoomsWithCrewmate();
             state.setNumberPercepcion(1);
 
@@ -36,6 +35,7 @@ public class AmongUsEnvironment extends Environment {
             state.setNextPower(r.nextInt(4,7)); //reseteo superpoder
          
         }else{//actualizacion normal
+            newPerception.setSuperpower(false);
             roomsWithCrewMates = (ArrayList<Room>) state.getRoomsWithCrewmateAdyacente().clone();
             if(state.getAgentPosition().crewmatesAliveInside()) roomsWithCrewMates.add(state.getAgentPosition());
         }

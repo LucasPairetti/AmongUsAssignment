@@ -54,6 +54,7 @@ public class Realizar_DestruirReactor extends SearchAction{
             //actualizo ambiente
             envState.setAgentEnergy(envState.getAgentEnergy()-1); //reducir enegia
             envState.getTaskList().remove(task); //remover task
+            envState.moveCrewmates();
             //actualizo agente
           impostorState.setAgentEnergy(impostorState.getAgentEnergy()-1); //reducir enegia
           impostorState.getTaskList().remove(task); //remover task
