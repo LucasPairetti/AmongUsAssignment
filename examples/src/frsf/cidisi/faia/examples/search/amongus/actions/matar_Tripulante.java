@@ -47,8 +47,6 @@ public class matar_Tripulante extends SearchAction{
 
         if(envState.getAgentEnergy()>0&&envState.isInRoomWithCrewmates()){
         
-        System.out.println("test");
-        
         //actualizo el ambiente
         envState.getAgentPosition().RemoveCrewmate(); //mato al primero de la lista 
         envState.setCrewmatesLeft(envState.getCrewmatesLeft()-1); //reduzco uno de la lista  

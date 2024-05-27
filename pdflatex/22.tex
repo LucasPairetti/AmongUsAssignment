@@ -1,0 +1,18 @@
+\documentclass[a0,landscale]{a0poster}
+\usepackage{mathptmx}
+\usepackage{qtree}
+\usepackage{nodo}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\title{Árbol de ejecución - Ejecución Nro: 22 - Estrategia: Depth First (Primero en profundidad)}
+\author{}
+\begin{document}
+\maketitle
+\begin{figure}[!h]
+\Tree [.\nodo{0}{0.0}{-} \nodo{1}{-1.0}{me moví a Cafetería} \nodo{2}{-1.0}{me moví a Shields} \nodo{3}{-1.0}{me moví a Electrical} \nodo{4}{-1.0}{me moví a Admin} \nodo{5}{-1.0}{me moví a Communication} \nodo{6}{-1.0}{me moví a Lower Engine} ]
+\Tree [.\nodo{1}{-1.0}{me moví a Cafetería} \nodo{7}{-2.0}{me moví a Medbay} \nodo{8}{-2.0}{me moví a Weapons} \nodo{9}{-2.0}{me moví a Upper Engine} \nodo{10}{-2.0}{me moví a Admin} \nodo{11}{-2.0}{me moví a Storage} ]
+\Tree [.\nodo{2}{-1.0}{me moví a Shields} \nodo{12}{-2.0}{me moví a Navigation} \nodo{13}{-2.0}{me moví a Weapons} \nodo{14}{-2.0}{me moví a Communication} \nodo{15}{-2.0}{me moví a O2} \nodo{16}{-2.0}{me moví a Storage} ]
+\Tree [.\nodo{3}{-1.0}{me moví a Electrical} \nodo{17}{-2.0}{me moví a Lower Engine} \nodo{18}{-2.0}{me moví a Storage} \nodo{19}{-2.0}{Desconecté el serivicio electrico!} ]
+\end{figure}
+
+\end{document}

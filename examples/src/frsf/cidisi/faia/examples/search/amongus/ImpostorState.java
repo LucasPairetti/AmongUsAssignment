@@ -166,7 +166,6 @@ public class ImpostorState extends SearchBasedAgentState {
         // Let perception set the elements
         this.agentEnergy = initializer.getAgentEnergy();
         this.agentPosition = keys.stream().filter((r)-> r.getId()==initializer.getAgentPosition()).collect(Collectors.toList()).get(0);
-        System.out.println(agentPosition.getName());
         this.crewmatesLeft = 3;
         this.taskList = new ArrayList<Task>();
         this.taskList.add(Task.DESCONECTAR_SERVICIO_ELECTRICO);

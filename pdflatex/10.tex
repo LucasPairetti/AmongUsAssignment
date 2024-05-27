@@ -1,0 +1,101 @@
+\documentclass[a0,landscale]{a0poster}
+\usepackage{mathptmx}
+\usepackage{qtree}
+\usepackage{nodo}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\title{Árbol de ejecución - Ejecución Nro: 10 - Estrategia: Depth First (Primero en profundidad)}
+\author{}
+\begin{document}
+\maketitle
+\begin{figure}[!h]
+\Tree [.\nodo{0}{0.0}{-} \nodo{1}{-1.0}{me moví a Navigation} \nodo{2}{-1.0}{me moví a Weapons} \nodo{3}{-1.0}{me moví a Communication} \nodo{4}{-1.0}{me moví a O2} \nodo{5}{-1.0}{me moví a Storage} ]
+\Tree [.\nodo{1}{-1.0}{me moví a Navigation} \nodo{6}{-2.0}{me moví a Shields} \nodo{7}{-2.0}{me moví a Weapons} \nodo{8}{-2.0}{me moví a O2} ]
+\Tree [.\nodo{6}{-2.0}{me moví a Shields} \nodo{9}{-3.0}{me moví a Navigation} \nodo{10}{-3.0}{me moví a Weapons} \nodo{11}{-3.0}{me moví a Communication} \nodo{12}{-3.0}{me moví a O2} \nodo{13}{-3.0}{me moví a Storage} ]
+\Tree [.\nodo{9}{-3.0}{me moví a Navigation} \nodo{14}{-4.0}{me moví a Shields} \nodo{15}{-4.0}{me moví a Weapons} \nodo{16}{-4.0}{me moví a O2} ]
+\end{figure}
+\begin{figure}[!h]
+\Tree [.\nodo{14}{-4.0}{me moví a Shields} \nodo{17}{-5.0}{me moví a Navigation} \nodo{18}{-5.0}{me moví a Weapons} \nodo{19}{-5.0}{me moví a Communication} \nodo{20}{-5.0}{me moví a O2} \nodo{21}{-5.0}{me moví a Storage} ]
+\Tree [.\nodo{17}{-5.0}{me moví a Navigation} \nodo{22}{-6.0}{me moví a Shields} \nodo{23}{-6.0}{me moví a Weapons} \nodo{24}{-6.0}{me moví a O2} ]
+\Tree [.\nodo{22}{-6.0}{me moví a Shields} \nodo{25}{-7.0}{me moví a Navigation} \nodo{26}{-7.0}{me moví a Weapons} \nodo{27}{-7.0}{me moví a Communication} \nodo{28}{-7.0}{me moví a O2} \nodo{29}{-7.0}{me moví a Storage} ]
+\Tree [.\nodo{25}{-7.0}{me moví a Navigation} \nodo{30}{-8.0}{me moví a Shields} \nodo{31}{-8.0}{me moví a Weapons} \nodo{32}{-8.0}{me moví a O2} ]
+\end{figure}
+\begin{figure}[!h]
+\Tree [.\nodo{30}{-8.0}{me moví a Shields} \nodo{33}{-9.0}{me moví a Navigation} \nodo{34}{-9.0}{me moví a Weapons} \nodo{35}{-9.0}{me moví a Communication} \nodo{36}{-9.0}{me moví a O2} \nodo{37}{-9.0}{me moví a Storage} ]
+\Tree [.\nodo{33}{-9.0}{me moví a Navigation} \nodo{38}{-10.0}{me moví a Shields} \nodo{39}{-10.0}{me moví a Weapons} \nodo{40}{-10.0}{me moví a O2} ]
+\Tree [.\nodo{38}{-10.0}{me moví a Shields} \nodo{41}{-11.0}{me moví a Navigation} \nodo{42}{-11.0}{me moví a Weapons} \nodo{43}{-11.0}{me moví a Communication} \nodo{44}{-11.0}{me moví a O2} \nodo{45}{-11.0}{me moví a Storage} ]
+\Tree [.\nodo{41}{-11.0}{me moví a Navigation} \nodo{46}{-12.0}{me moví a Shields} \nodo{47}{-12.0}{me moví a Weapons} \nodo{48}{-12.0}{me moví a O2} ]
+\end{figure}
+\begin{figure}[!h]
+\Tree [.\nodo{42}{-11.0}{me moví a Weapons} \nodo{107}{-12.0}{me moví a Cafetería} \nodo{108}{-12.0}{me moví a Navigation} \nodo{109}{-12.0}{me moví a Shields} \nodo{110}{-12.0}{me moví a O2} ]
+\Tree [.\nodo{43}{-11.0}{me moví a Communication} \nodo{188}{-12.0}{me moví a Shields} \nodo{189}{-12.0}{me moví a Storage} ]
+\Tree [.\nodo{46}{-12.0}{me moví a Shields} \nodo{49}{-13.0}{me moví a Navigation} \nodo{50}{-13.0}{me moví a Weapons} \nodo{51}{-13.0}{me moví a Communication} \nodo{52}{-13.0}{me moví a O2} \nodo{53}{-13.0}{me moví a Storage} ]
+\Tree [.\nodo{47}{-12.0}{me moví a Weapons} \nodo{72}{-13.0}{me moví a Cafetería} \nodo{73}{-13.0}{me moví a Navigation} \nodo{74}{-13.0}{me moví a Shields} \nodo{75}{-13.0}{me moví a O2} ]
+\end{figure}
+\begin{figure}[!h]
+\Tree [.\nodo{48}{-12.0}{me moví a O2} \nodo{92}{-13.0}{me moví a Navigation} \nodo{93}{-13.0}{me moví a Shields} \nodo{94}{-13.0}{me moví a Weapons} ]
+\Tree [.\nodo{49}{-13.0}{me moví a Navigation} \nodo{54}{-14.0}{me moví a Shields} \nodo{55}{-14.0}{me moví a Weapons} \nodo{56}{-14.0}{me moví a O2} ]
+\Tree [.\nodo{50}{-13.0}{me moví a Weapons} \nodo{57}{-14.0}{me moví a Cafetería} \nodo{58}{-14.0}{me moví a Navigation} \nodo{59}{-14.0}{me moví a Shields} \nodo{60}{-14.0}{me moví a O2} ]
+\Tree [.\nodo{51}{-13.0}{me moví a Communication} \nodo{61}{-14.0}{me moví a Shields} \nodo{62}{-14.0}{me moví a Storage} ]
+\end{figure}
+\begin{figure}[!h]
+\Tree [.\nodo{52}{-13.0}{me moví a O2} \nodo{63}{-14.0}{me moví a Navigation} \nodo{64}{-14.0}{me moví a Shields} \nodo{65}{-14.0}{me moví a Weapons} ]
+\Tree [.\nodo{53}{-13.0}{me moví a Storage} \nodo{66}{-14.0}{me moví a Cafetería} \nodo{67}{-14.0}{me moví a Shields} \nodo{68}{-14.0}{me moví a Electrical} \nodo{69}{-14.0}{me moví a Admin} \nodo{70}{-14.0}{me moví a Communication} \nodo{71}{-14.0}{me moví a Lower Engine} ]
+\Tree [.\nodo{72}{-13.0}{me moví a Cafetería} \nodo{76}{-14.0}{me moví a Medbay} \nodo{77}{-14.0}{me moví a Weapons} \nodo{78}{-14.0}{me moví a Upper Engine} \nodo{79}{-14.0}{me moví a Admin} \nodo{80}{-14.0}{me moví a Storage} ]
+\Tree [.\nodo{73}{-13.0}{me moví a Navigation} \nodo{81}{-14.0}{me moví a Shields} \nodo{82}{-14.0}{me moví a Weapons} \nodo{83}{-14.0}{me moví a O2} ]
+\end{figure}
+\begin{figure}[!h]
+\Tree [.\nodo{74}{-13.0}{me moví a Shields} \nodo{84}{-14.0}{me moví a Navigation} \nodo{85}{-14.0}{me moví a Weapons} \nodo{86}{-14.0}{me moví a Communication} \nodo{87}{-14.0}{me moví a O2} \nodo{88}{-14.0}{me moví a Storage} ]
+\Tree [.\nodo{75}{-13.0}{me moví a O2} \nodo{89}{-14.0}{me moví a Navigation} \nodo{90}{-14.0}{me moví a Shields} \nodo{91}{-14.0}{me moví a Weapons} ]
+\Tree [.\nodo{92}{-13.0}{me moví a Navigation} \nodo{95}{-14.0}{me moví a Shields} \nodo{96}{-14.0}{me moví a Weapons} \nodo{97}{-14.0}{me moví a O2} ]
+\Tree [.\nodo{93}{-13.0}{me moví a Shields} \nodo{98}{-14.0}{me moví a Navigation} \nodo{99}{-14.0}{me moví a Weapons} \nodo{100}{-14.0}{me moví a Communication} \nodo{101}{-14.0}{me moví a O2} \nodo{102}{-14.0}{me moví a Storage} ]
+\end{figure}
+\begin{figure}[!h]
+\Tree [.\nodo{94}{-13.0}{me moví a Weapons} \nodo{103}{-14.0}{me moví a Cafetería} \nodo{104}{-14.0}{me moví a Navigation} \nodo{105}{-14.0}{me moví a Shields} \nodo{106}{-14.0}{me moví a O2} ]
+\Tree [.\nodo{107}{-12.0}{me moví a Cafetería} \nodo{111}{-13.0}{me moví a Medbay} \nodo{112}{-13.0}{me moví a Weapons} \nodo{113}{-13.0}{me moví a Upper Engine} \nodo{114}{-13.0}{me moví a Admin} \nodo{115}{-13.0}{me moví a Storage} ]
+\Tree [.\nodo{108}{-12.0}{me moví a Navigation} \nodo{135}{-13.0}{me moví a Shields} \nodo{136}{-13.0}{me moví a Weapons} \nodo{137}{-13.0}{me moví a O2} ]
+\Tree [.\nodo{109}{-12.0}{me moví a Shields} \nodo{150}{-13.0}{me moví a Navigation} \nodo{151}{-13.0}{me moví a Weapons} \nodo{152}{-13.0}{me moví a Communication} \nodo{153}{-13.0}{me moví a O2} \nodo{154}{-13.0}{me moví a Storage} ]
+\end{figure}
+\begin{figure}[!h]
+\Tree [.\nodo{110}{-12.0}{me moví a O2} \nodo{173}{-13.0}{me moví a Navigation} \nodo{174}{-13.0}{me moví a Shields} \nodo{175}{-13.0}{me moví a Weapons} ]
+\Tree [.\nodo{111}{-13.0}{me moví a Medbay} \nodo{116}{-14.0}{me moví a Cafetería} \nodo{117}{-14.0}{me moví a Upper Engine} ]
+\Tree [.\nodo{112}{-13.0}{me moví a Weapons} \nodo{118}{-14.0}{me moví a Cafetería} \nodo{119}{-14.0}{me moví a Navigation} \nodo{120}{-14.0}{me moví a Shields} \nodo{121}{-14.0}{me moví a O2} ]
+\Tree [.\nodo{113}{-13.0}{me moví a Upper Engine} \nodo{122}{-14.0}{me moví a Medbay} \nodo{123}{-14.0}{me moví a Cafetería} \nodo{124}{-14.0}{me moví a Reactor} \nodo{125}{-14.0}{me moví a Lower Engine} \nodo{126}{-14.0}{me moví a Security} ]
+\end{figure}
+\begin{figure}[!h]
+\Tree [.\nodo{114}{-13.0}{me moví a Admin} \nodo{127}{-14.0}{me moví a Cafetería} \nodo{128}{-14.0}{me moví a Storage} ]
+\Tree [.\nodo{115}{-13.0}{me moví a Storage} \nodo{129}{-14.0}{me moví a Cafetería} \nodo{130}{-14.0}{me moví a Shields} \nodo{131}{-14.0}{me moví a Electrical} \nodo{132}{-14.0}{me moví a Admin} \nodo{133}{-14.0}{me moví a Communication} \nodo{134}{-14.0}{me moví a Lower Engine} ]
+\Tree [.\nodo{135}{-13.0}{me moví a Shields} \nodo{138}{-14.0}{me moví a Navigation} \nodo{139}{-14.0}{me moví a Weapons} \nodo{140}{-14.0}{me moví a Communication} \nodo{141}{-14.0}{me moví a O2} \nodo{142}{-14.0}{me moví a Storage} ]
+\Tree [.\nodo{136}{-13.0}{me moví a Weapons} \nodo{143}{-14.0}{me moví a Cafetería} \nodo{144}{-14.0}{me moví a Navigation} \nodo{145}{-14.0}{me moví a Shields} \nodo{146}{-14.0}{me moví a O2} ]
+\end{figure}
+\begin{figure}[!h]
+\Tree [.\nodo{137}{-13.0}{me moví a O2} \nodo{147}{-14.0}{me moví a Navigation} \nodo{148}{-14.0}{me moví a Shields} \nodo{149}{-14.0}{me moví a Weapons} ]
+\Tree [.\nodo{150}{-13.0}{me moví a Navigation} \nodo{155}{-14.0}{me moví a Shields} \nodo{156}{-14.0}{me moví a Weapons} \nodo{157}{-14.0}{me moví a O2} ]
+\Tree [.\nodo{151}{-13.0}{me moví a Weapons} \nodo{158}{-14.0}{me moví a Cafetería} \nodo{159}{-14.0}{me moví a Navigation} \nodo{160}{-14.0}{me moví a Shields} \nodo{161}{-14.0}{me moví a O2} ]
+\Tree [.\nodo{152}{-13.0}{me moví a Communication} \nodo{162}{-14.0}{me moví a Shields} \nodo{163}{-14.0}{me moví a Storage} ]
+\end{figure}
+\begin{figure}[!h]
+\Tree [.\nodo{153}{-13.0}{me moví a O2} \nodo{164}{-14.0}{me moví a Navigation} \nodo{165}{-14.0}{me moví a Shields} \nodo{166}{-14.0}{me moví a Weapons} ]
+\Tree [.\nodo{154}{-13.0}{me moví a Storage} \nodo{167}{-14.0}{me moví a Cafetería} \nodo{168}{-14.0}{me moví a Shields} \nodo{169}{-14.0}{me moví a Electrical} \nodo{170}{-14.0}{me moví a Admin} \nodo{171}{-14.0}{me moví a Communication} \nodo{172}{-14.0}{me moví a Lower Engine} ]
+\Tree [.\nodo{173}{-13.0}{me moví a Navigation} \nodo{176}{-14.0}{me moví a Shields} \nodo{177}{-14.0}{me moví a Weapons} \nodo{178}{-14.0}{me moví a O2} ]
+\Tree [.\nodo{174}{-13.0}{me moví a Shields} \nodo{179}{-14.0}{me moví a Navigation} \nodo{180}{-14.0}{me moví a Weapons} \nodo{181}{-14.0}{me moví a Communication} \nodo{182}{-14.0}{me moví a O2} \nodo{183}{-14.0}{me moví a Storage} ]
+\end{figure}
+\begin{figure}[!h]
+\Tree [.\nodo{175}{-13.0}{me moví a Weapons} \nodo{184}{-14.0}{me moví a Cafetería} \nodo{185}{-14.0}{me moví a Navigation} \nodo{186}{-14.0}{me moví a Shields} \nodo{187}{-14.0}{me moví a O2} ]
+\Tree [.\nodo{188}{-12.0}{me moví a Shields} \nodo{190}{-13.0}{me moví a Navigation} \nodo{191}{-13.0}{me moví a Weapons} \nodo{192}{-13.0}{me moví a Communication} \nodo{193}{-13.0}{me moví a O2} \nodo{194}{-13.0}{me moví a Storage} ]
+\Tree [.\nodo{189}{-12.0}{me moví a Storage} \nodo{213}{-13.0}{me moví a Cafetería} \nodo{214}{-13.0}{me moví a Shields} \nodo{215}{-13.0}{me moví a Electrical} \nodo{216}{-13.0}{me moví a Admin} \nodo{217}{-13.0}{me moví a Communication} \nodo{218}{-13.0}{me moví a Lower Engine} ]
+\Tree [.\nodo{190}{-13.0}{me moví a Navigation} \nodo{195}{-14.0}{me moví a Shields} \nodo{196}{-14.0}{me moví a Weapons} \nodo{197}{-14.0}{me moví a O2} ]
+\end{figure}
+\begin{figure}[!h]
+\Tree [.\nodo{191}{-13.0}{me moví a Weapons} \nodo{198}{-14.0}{me moví a Cafetería} \nodo{199}{-14.0}{me moví a Navigation} \nodo{200}{-14.0}{me moví a Shields} \nodo{201}{-14.0}{me moví a O2} ]
+\Tree [.\nodo{192}{-13.0}{me moví a Communication} \nodo{202}{-14.0}{me moví a Shields} \nodo{203}{-14.0}{me moví a Storage} ]
+\Tree [.\nodo{193}{-13.0}{me moví a O2} \nodo{204}{-14.0}{me moví a Navigation} \nodo{205}{-14.0}{me moví a Shields} \nodo{206}{-14.0}{me moví a Weapons} ]
+\Tree [.\nodo{194}{-13.0}{me moví a Storage} \nodo{207}{-14.0}{me moví a Cafetería} \nodo{208}{-14.0}{me moví a Shields} \nodo{209}{-14.0}{me moví a Electrical} \nodo{210}{-14.0}{me moví a Admin} \nodo{211}{-14.0}{me moví a Communication} \nodo{212}{-14.0}{me moví a Lower Engine} ]
+\end{figure}
+\begin{figure}[!h]
+\Tree [.\nodo{213}{-13.0}{me moví a Cafetería} \nodo{219}{-14.0}{me moví a Medbay} \nodo{220}{-14.0}{me moví a Weapons} \nodo{221}{-14.0}{me moví a Upper Engine} \nodo{222}{-14.0}{me moví a Admin} \nodo{223}{-14.0}{me moví a Storage} ]
+\Tree [.\nodo{214}{-13.0}{me moví a Shields} \nodo{224}{-14.0}{me moví a Navigation} \nodo{225}{-14.0}{me moví a Weapons} \nodo{226}{-14.0}{me moví a Communication} \nodo{227}{-14.0}{me moví a O2} \nodo{228}{-14.0}{me moví a Storage} ]
+\Tree [.\nodo{215}{-13.0}{me moví a Electrical} \nodo{229}{-14.0}{me moví a Lower Engine} \nodo{230}{-14.0}{me moví a Storage} \nodo{231}{-14.0}{Desconecté el serivicio electrico!} ]
+\end{figure}
+
+\end{document}

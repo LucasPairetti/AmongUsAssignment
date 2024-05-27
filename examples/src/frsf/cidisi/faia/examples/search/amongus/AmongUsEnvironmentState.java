@@ -67,7 +67,6 @@ public class AmongUsEnvironmentState extends EnvironmentState {
         ArrayList<Room> keys = new ArrayList<Room>(ship.keySet());
         Random r = new Random();
         this.agentPosition = keys.stream().filter((room)-> room.getId()==initializer.getAgentPosition()).collect(Collectors.toList()).get(0);
-        System.out.println(agentPosition.getName());
         this.agentEnergy = initializer.getAgentEnergy();
         this.initialEnergy = this.agentEnergy;
         this.crewmatesLeft = 3;

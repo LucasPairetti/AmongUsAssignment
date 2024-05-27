@@ -1,0 +1,17 @@
+\documentclass[a0,landscale]{a0poster}
+\usepackage{mathptmx}
+\usepackage{qtree}
+\usepackage{nodo}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\title{Árbol de ejecución - Ejecución Nro: 8 - Estrategia: Breath First (Primero en amplitud)}
+\author{}
+\begin{document}
+\maketitle
+\begin{figure}[!h]
+\Tree [.\nodo{0}{0.0}{-} \nodo{1}{1.0}{me moví a Lower Engine} \nodo{2}{1.0}{me moví a Storage} \nodo{3}{1.0}{Desconecté el serivicio electrico!} ]
+\Tree [.\nodo{1}{1.0}{me moví a Lower Engine} \nodo{4}{2.0}{me moví a Electrical} \nodo{5}{2.0}{me moví a Reactor} \nodo{6}{2.0}{me moví a Upper Engine} \nodo{7}{2.0}{me moví a Storage} \nodo{8}{2.0}{me moví a Security} ]
+\Tree [.\nodo{2}{1.0}{me moví a Storage} \nodo{9}{2.0}{me moví a Cafetería} \nodo{10}{2.0}{me moví a Shields} \nodo{11}{2.0}{me moví a Electrical} \nodo{12}{2.0}{me moví a Admin} \nodo{13}{2.0}{me moví a Communication} \nodo{14}{2.0}{me moví a Lower Engine} ]
+\end{figure}
+
+\end{document}

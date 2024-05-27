@@ -96,11 +96,11 @@ public class Impostor extends SearchBasedAgent {
     @Override
     public Action selectAction() { //copypaste
         //   // Create the search strategy
-        // BreathFirstSearch strategy = new BreathFirstSearch();
+        BreathFirstSearch strategy = new BreathFirstSearch();
 
-        IStepCostFunction cost = new CostFunction();
-        IEstimatedCostFunction heuristic = new Heuristic();
-        AStarSearch strategy = new AStarSearch(cost, heuristic);
+        // IStepCostFunction cost = new CostFunction();
+        // IEstimatedCostFunction heuristic = new Heuristic();
+        // AStarSearch strategy = new AStarSearch(cost, heuristic);
 
         // Create a Search object with the strategy
         Search searchSolver = new Search(strategy);
